@@ -53,13 +53,22 @@ class Facet(BaseModel):
     options: List[FacetOption]
 
 
+class FilterOption(BaseModel):
+    """
+    Represents a Filter option.
+    """
+
+    key: str
+    value: str
+
+
 class SearchQuery(BaseModel):
     """
     Represents the Search Query.
     """
 
     query: str
-    facets: Optional[Dict] = None
+    filters: Optional[FilterOption] = None
 
 
 class SearchHit(BaseModel):
