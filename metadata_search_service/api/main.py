@@ -19,12 +19,29 @@ Additional endpoints might be structured in dedicated modules
 (each of them having a sub-router).
 """
 
-from fastapi import FastAPI
+from fastapi import FastAPI, HTTPException
+
+from metadata_search_service.dao.document import get_documents
+from metadata_search_service.models import DocumentType, SearchResult
 
 app = FastAPI()
 
 
-@app.get("/", summary="Greet the world")
+@app.get("/", summary="Index for Metadata Search Service")
 async def index():
-    """Greet the World"""
-    return "Hello World."
+    """Index for Metadata Search Service."""
+    return "Index for Metadata Search Service."
+
+
+@app.post(
+    "/rpc/search",
+    summary="Search metadata by keywords and facets",
+    response_model=SearchResult,
+)
+async def search(query: str, document_type: DocumentType, facet: bool = False):
+    """Search metadata based on a given query string."""
+    if query != "*":
+        raise HTTPException(status_code=400, detail="Unexpected search query pattern.")
+    hits, facets = await get_documents(document_type, facet)
+    response = {"hits": hits, "facets": facets}
+    return response
