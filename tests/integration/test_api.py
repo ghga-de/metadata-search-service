@@ -28,4 +28,4 @@ def test_index():
     response = client.get("/")
 
     assert response.status_code == status.HTTP_200_OK
-    assert response.text == '"Hello World."'
+    assert response.text == '"Index for Metadata Search Service."'
