@@ -20,11 +20,12 @@ from motor.motor_asyncio import AsyncIOMotorClient
 from metadata_search_service.config import get_config
 
 
-async def get_db_client() -> AsyncIOMotorClient:
+async def get_db_client(db_url: str = None) -> AsyncIOMotorClient:
     """
     Get database client.
     """
     config = get_config()
-    db_url = config.db_url
+    if not db_url:
+        db_url = config.db_url
     db_client = AsyncIOMotorClient(db_url)
     return db_client

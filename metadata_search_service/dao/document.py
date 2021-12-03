@@ -20,16 +20,16 @@ from typing import Any, Dict, List, Set, Tuple
 import stringcase
 from pymongo import ASCENDING
 
-from metadata_search_service.config import get_config
+from metadata_search_service.config import Config, get_config
 from metadata_search_service.core.utils import DEFAULT_FACET_FIELDS
 from metadata_search_service.dao.db import get_db_client
 
 # pylint: disable=too-many-locals, too-many-nested-blocks, too-many-branches
 
-config = get_config()
 
-
-async def get_documents(document_type: str, facet: bool = False) -> Tuple[List, List]:
+async def get_documents(
+    document_type: str, facet: bool = False, config: Config = get_config()
+) -> Tuple[List, List]:
     """
     Get documents for a given document type.
 
@@ -41,7 +41,7 @@ async def get_documents(document_type: str, facet: bool = False) -> Tuple[List, 
         A list of documents with facets and a list of facets, if ``facet=True``
 
     """
-    docs = await _get_documents(document_type)
+    docs = await _get_documents(document_type, config)
     hits = [{"document_type": document_type, "id": x["id"], "content": x} for x in docs]
     facets = []
     if facet:
@@ -58,7 +58,7 @@ async def get_documents(document_type: str, facet: bool = False) -> Tuple[List, 
     return hits, facets
 
 
-async def _get_documents(collection_name: str) -> List:
+async def _get_documents(collection_name: str, config: Config = get_config()) -> List:
     """
     Get documents from a given ``collection_name``.
 
@@ -69,7 +69,7 @@ async def _get_documents(collection_name: str) -> List:
         A list of documents from the collection
 
     """
-    client = await get_db_client()
+    client = await get_db_client(config.db_url)
     collection = client[config.db_name][collection_name]
     docs = await collection.find().sort("id", ASCENDING).to_list(None)  # type: ignore
     for doc in docs:
@@ -78,7 +78,9 @@ async def _get_documents(collection_name: str) -> List:
     return docs
 
 
-async def _get_reference(document_id: str, collection_name: str) -> Dict:
+async def _get_reference(
+    document_id: str, collection_name: str, config: Config = get_config()
+) -> Dict:
     """
     Given a document ID and a collection name, query the metadata store
     and return the document.
@@ -90,7 +92,7 @@ async def _get_reference(document_id: str, collection_name: str) -> Dict:
     Returns
         The document corresponding to ``document_id``
     """
-    client = await get_db_client()
+    client = await get_db_client(config.db_url)
     collection = client[config.db_name][collection_name]
     doc = await collection.find_one({"id": document_id})  # type: ignore
     if doc:
