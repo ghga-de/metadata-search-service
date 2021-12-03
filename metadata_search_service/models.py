@@ -58,7 +58,7 @@ class SearchQuery(BaseModel):
     Represents the Search Query.
     """
 
-    q: str
+    query: str
     facets: Optional[Dict] = None
 
 
