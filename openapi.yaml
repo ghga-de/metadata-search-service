@@ -42,6 +42,20 @@ components:
       - option
       title: FacetOption
       type: object
+    FilterOption:
+      description: Represents a Filter option.
+      properties:
+        key:
+          title: Key
+          type: string
+        value:
+          title: Value
+          type: string
+      required:
+      - key
+      - value
+      title: FilterOption
+      type: object
     HTTPValidationError:
       properties:
         detail:
@@ -69,6 +83,18 @@ components:
       - document_type
       - id
       title: SearchHit
+      type: object
+    SearchQuery:
+      description: Represents the Search Query.
+      properties:
+        filters:
+          $ref: '#/components/schemas/FilterOption'
+        query:
+          title: Query
+          type: string
+      required:
+      - query
+      title: SearchQuery
       type: object
     SearchResult:
       description: Represents the Search Result.
@@ -129,12 +155,6 @@ paths:
       operationId: search_rpc_search_post
       parameters:
       - in: query
-        name: query
-        required: true
-        schema:
-          title: Query
-          type: string
-      - in: query
         name: document_type
         required: true
         schema:
@@ -146,6 +166,12 @@ paths:
           default: false
           title: Facet
           type: boolean
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SearchQuery'
+        required: true
       responses:
         '200':
           content:
