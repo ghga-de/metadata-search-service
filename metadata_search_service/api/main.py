@@ -43,5 +43,5 @@ async def search(query: str, document_type: DocumentType, facet: bool = False):
     if query != "*":
         raise HTTPException(status_code=400, detail="Unexpected search query pattern.")
     hits, facets = await get_documents(document_type, facet)
-    response = {"hits": hits, "facets": facets}
+    response = {"facets": facets, "hits": hits}
     return response

@@ -78,5 +78,5 @@ class SearchResult(BaseModel):
     Represents the Search Result.
     """
 
-    hits: List[SearchHit]
     facets: List[Facet]
+    hits: List[SearchHit]
