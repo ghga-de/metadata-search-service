@@ -84,7 +84,7 @@ async def _get_documents(
         A list of documents from the collection
 
     """
-    client = await get_db_client(config.db_url)
+    client = await get_db_client(config)
     collection = client[config.db_name][collection_name]
     cursor = collection.find().sort("id", ASCENDING).skip(skip).limit(limit)  # type: ignore
     docs = await cursor.to_list(None)
@@ -109,7 +109,7 @@ async def _get_reference(
     Returns
         The document corresponding to ``document_id``
     """
-    client = await get_db_client(config.db_url)
+    client = await get_db_client(config)
     collection = client[config.db_name][collection_name]
     doc = await collection.find_one({"id": document_id})  # type: ignore
     if doc:
