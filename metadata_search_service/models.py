@@ -14,3 +14,78 @@
 # limitations under the License.
 
 """Defines all dataclasses/classes pertaining to a data model or schema"""
+
+from enum import Enum
+from typing import Dict, List, Optional
+
+from pydantic import BaseModel
+
+
+class DocumentType(str, Enum):
+    """
+    Enum for the type of document.
+    """
+
+    DATASET = "Dataset"
+    PROJECT = "Project"
+    STUDY = "Study"
+    EXPERIMENT = "Experiment"
+    SAMPLE = "Sample"
+    PUBLICATION = "Publication"
+    FILE = "File"
+
+
+class FacetOption(BaseModel):
+    """
+    Represent values and their corresponding count for a facet.
+    """
+
+    option: str
+    count: Optional[int] = None
+
+
+class Facet(BaseModel):
+    """
+    Represents a facet and the possible values for that facet.
+    """
+
+    key: str
+    options: List[FacetOption]
+
+
+class FilterOption(BaseModel):
+    """
+    Represents a Filter option.
+    """
+
+    key: str
+    value: str
+
+
+class SearchQuery(BaseModel):
+    """
+    Represents the Search Query.
+    """
+
+    query: str
+    filters: Optional[List[FilterOption]] = None
+
+
+class SearchHit(BaseModel):
+    """
+    Represents the Search Hit.
+    """
+
+    document_type: DocumentType
+    id: str
+    context: Optional[str] = None
+    content: Optional[Dict] = None
+
+
+class SearchResult(BaseModel):
+    """
+    Represents the Search Result.
+    """
+
+    facets: List[Facet]
+    hits: List[SearchHit]

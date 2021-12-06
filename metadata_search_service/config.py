@@ -30,6 +30,8 @@ class Config(ApiConfigBase, PubSubConfigBase):
     # are inherited from ApiConfigBase;
     # config parameter needed for the api server
     # are inherited from PubSubConfigBase;
+    db_url: str = "mongodb://localhost:27017"
+    db_name: str = "metadata-store"
 
 
 @lru_cache

@@ -14,3 +14,30 @@
 # limitations under the License.
 
 """Fixtures that are used in both integration and unit tests"""
+
+import json
+import os
+
+import pytest
+from motor.motor_asyncio import AsyncIOMotorClient
+
+
+@pytest.fixture(scope="function")
+async def initialize_test_db():
+    """Initialize a test metadata store using AsyncIOMotorClient"""
+    curr_dir = os.path.dirname(__file__)
+    json_files = [
+        ("datasets.json", "Dataset"),
+        ("studies.json", "Study"),
+        ("experiments.json", "Experiment"),
+        ("biospecimens.json", "Biospecimen"),
+        ("samples.json", "Sample"),
+    ]
+    db_client = AsyncIOMotorClient("mongodb://localhost:27017")
+    for filename, collection_name in json_files:
+        full_filename = open(os.path.join(curr_dir, "..", "test_data", filename))
+        objects = json.load(full_filename)
+        await db_client["metadata-store-test"][collection_name].delete_many({})
+        await db_client["metadata-store-test"][collection_name].insert_many(
+            objects[filename.split(".")[0]]
+        )

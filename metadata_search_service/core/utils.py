@@ -12,18 +12,27 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
+"""Core utilities for the Metadata Search Service"""
 
-"""Connects to database."""
+import time
+from typing import Any, Dict, Set
 
-from motor.motor_asyncio import AsyncIOMotorClient
+DEFAULT_FACET_FIELDS: Dict[str, Set[Any]] = {
+    "Dataset": {"type", "has_study.type"},
+    "Project": set(),
+    "Study": {"type"},
+    "Experiment": set(),
+    "Sample": {"has_individual.id"},
+    "Publication": set(),
+    "File": {"type"},
+}
 
-from metadata_search_service.config import Config, get_config
 
-
-async def get_db_client(config: Config = get_config()) -> AsyncIOMotorClient:
+def get_time_in_millis() -> int:
     """
-    Get database client.
+    Get current time in milliseconds
+
+    Returns:
+        Time in milliseconds
     """
-    db_url = config.db_url
-    db_client = AsyncIOMotorClient(db_url)
-    return db_client
+    return int(round(time.time() * 1000))
