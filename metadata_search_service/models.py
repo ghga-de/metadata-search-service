@@ -68,7 +68,7 @@ class SearchQuery(BaseModel):
     """
 
     query: str
-    filters: Optional[FilterOption] = None
+    filters: Optional[List[FilterOption]] = None
 
 
 class SearchHit(BaseModel):
