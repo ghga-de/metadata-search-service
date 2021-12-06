@@ -15,10 +15,24 @@
 
 """Test the api module"""
 
+import nest_asyncio
+import pytest
 from fastapi import status
 from fastapi.testclient import TestClient
 
 from metadata_search_service.api.main import app
+from metadata_search_service.config import Config, get_config
+from tests.fixtures import initialize_test_db  # noqa: F401,F811
+
+nest_asyncio.apply()
+
+
+def get_config_override():
+    return Config(db_url="mongodb://localhost:27017", db_name="metadata-store-test")
+
+
+app.dependency_overrides[get_config] = get_config_override
+client = TestClient(app)
 
 
 def test_index():
@@ -29,3 +43,22 @@ def test_index():
 
     assert response.status_code == status.HTTP_200_OK
     assert response.text == '"Index for Metadata Search Service."'
+
+
+@pytest.mark.parametrize(
+    "query,document_type,facet",
+    [
+        ({"query": "*"}, "Dataset", False),
+        ({"query": "*"}, "Study", True),
+    ],
+)
+@pytest.mark.asyncio
+async def test_search(initialize_test_db, query, document_type, facet):  # noqa: F811
+    response = client.post(
+        f"/rpc/search?document_type={document_type}&facet={facet}", json=query
+    )
+    assert response.status_code == 200
+    data = response.json()
+    assert len(data["hits"]) > 0
+    if facet:
+        assert len(data["facets"]) > 0
