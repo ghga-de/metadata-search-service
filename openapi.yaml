@@ -88,7 +88,10 @@ components:
       description: Represents the Search Query.
       properties:
         filters:
-          $ref: '#/components/schemas/FilterOption'
+          items:
+            $ref: '#/components/schemas/FilterOption'
+          title: Filters
+          type: array
         query:
           title: Query
           type: string
