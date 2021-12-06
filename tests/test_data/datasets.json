@@ -1,0 +1,163 @@
+{
+  "datasets": [
+    {
+      "accession": "EGAD00001000174",
+      "creation_date": "2012-05-08T06:34.000Z",
+      "description": "DATA_SET_Coverage_bias_sensitivity_of_variant_calling_for_4_WG_seq_tech",
+      "has_attribute": [
+        {
+          "key": "released",
+          "value": "RELEASED"
+        },
+        {
+          "key": "releasedDate",
+          "value": "2015-05-26T22:00.000Z"
+        },
+        {
+          "key": "centerName",
+          "value": "DKFZ-IBIOS"
+        }
+      ],
+      "has_data_access_policy": "ee47e39e-a85f-4d9e-88d8-27cb89c92b92",
+      "has_experiment": [
+        "997dda34-5ed5-42f3-877b-c9cc327d35ff",
+        "98d8ddae-525b-4f75-b4f3-1bc9412e03ed",
+        "80a594cd-db54-435a-9cae-d5055003ddc1",
+        "bd1a038f-2032-4553-b33a-026cf9df83ae"
+      ],
+      "has_study": [
+        "595c6fe1-1908-4596-b72a-ac89b7960375"
+      ],
+      "id": "12461315-7bd4-40ff-9c2f-0e0fa4cd6c66",
+      "title": "DATA_SET_Coverage_bias_sensitivity_of_variant_calling_for_4_WG_seq_tech",
+      "type": "sample",
+      "xref": [
+        "DATA_SET_Coverage_bias_sensitivity_of_variant_calling_for_4_WG_seq_tech"
+      ]
+    },
+    {
+      "accession": "EGAD00001000366",
+      "creation_date": "2013-03-27T14:53.000Z",
+      "description": "WGBS data of whole blood samples from smoking and non-smoking mothers and their children at gestation/birth and follow-up years.",
+      "has_attribute": [
+        {
+          "key": "released",
+          "value": "RELEASED"
+        },
+        {
+          "key": "releasedDate",
+          "value": "2016-07-04T22:00.000Z"
+        },
+        {
+          "key": "centerName",
+          "value": "DKFZ-IBIOS"
+        }
+      ],
+      "has_data_access_policy": "170f92a4-090c-4c62-b190-9f7f5500d169",
+      "has_experiment": [
+        "4884b135-2f9d-4ad4-bee3-71029916b72c",
+        "8449d2c2-63f1-48f3-b776-e2ef63daa59b",
+        "a3007e28-4996-4ce8-85ab-887ef4530d9d",
+        "373a0508-bf0c-42d2-945c-005c1215a113",
+        "6853876a-282d-43fc-a2f9-5d0fcbf21ef6",
+        "0544366f-80e1-48f2-bbca-335afb08c88c",
+        "68d206cd-6421-4cfd-abbd-b4a1ccbc87ad",
+        "b7734f02-c76c-42d6-89f3-daaf46194e92",
+        "b10f987f-66ad-4b26-9ed8-f2a67d0f8b1c",
+        "24c21ccf-ba21-41b2-a923-42a7d64b4efc",
+        "3aac029e-faad-47ee-a1cb-08b52f4426df",
+        "4ff963cc-8883-44fa-b40c-62d6d570a391",
+        "d51dbc0b-9ae2-45b3-9fdd-652fde1720dd",
+        "ca4a84b3-5880-4a25-80d4-c763ead73ed1",
+        "a5a569c3-1d76-4227-a15d-8ea07694de7a",
+        "580810e0-dfb2-4aa9-afd0-21fe066f6b49",
+        "fa999937-a055-4ef9-8b21-2384cab3357d",
+        "b47f823e-5554-43a0-9a50-8d912312219a",
+        "dcabaf99-1c0b-4a20-9088-b507afb583a5",
+        "cdb7126a-4121-4861-91fe-6e7a6c8a2adc",
+        "fa1e16df-8264-4689-a236-ac3c78ea380f",
+        "924dc712-800e-4a19-8529-345fbfc45298",
+        "2dc3b425-a121-4bbe-a0e2-59b6fab54aa9",
+        "7578cacd-3590-4bee-abd0-4901a13963c6",
+        "31bea112-a2ea-4128-98e7-5f23c4d6585e",
+        "d9657eed-1376-4312-bf69-c969f774dcb3",
+        "3eb3fa7f-8ffb-4a9c-9e30-6c346b611cb2",
+        "d2dc60c9-49e9-4bb9-9e7e-8f1b5a527860",
+        "65b33726-abde-460f-ac57-4129dfcbef92",
+        "dc3454e3-b8d9-4dce-beb5-535da5f278ff",
+        "46667b08-f817-4789-819f-32bf53633184",
+        "3ece3d62-c57a-44cb-a0db-dba42532e184",
+        "bd8b9807-6fd8-4737-86ff-59af9267d7c8",
+        "a34bc314-4292-4d55-8944-9a7a8282cdb8",
+        "18786ae7-8fd8-43f2-ab14-fd00782aba03",
+        "881af71f-e841-4b8e-ba9d-c937520adf75",
+        "a7b0c580-4326-4bc3-8431-4d0f89515c3c",
+        "22fea590-c99a-4249-b588-5720d1565c60",
+        "e04bbf35-11a4-4b19-b759-9b77b7449ed2",
+        "4e70618f-0ab7-46f6-90f3-445b3a98ebaa",
+        "7ef573d4-717a-4378-82af-fcbc4af53997",
+        "a57eb1e4-023d-4676-b1b7-2a9db88e9226",
+        "52f0c5d4-3e51-4d5a-a9e6-2ef83a19af71",
+        "6b5c4951-6e83-490e-adb5-9193ec5ab585",
+        "d5ea893e-2b50-4a58-bc6c-de8705c1c942",
+        "b0bf3eeb-eb33-4420-8288-523312c3e861",
+        "791e4a91-caa6-43df-915b-f23d96a55d64",
+        "225acb90-9ef8-4df8-a8a4-c10a08ed16a2",
+        "d32893ff-69ac-4da4-8164-53df7166dba0",
+        "470e6520-5cf2-426f-8562-586ab860f211",
+        "daeff487-06aa-4c1a-92b5-e9d233df9a4e",
+        "bcafaf1e-37e3-4de8-b285-fc0e0577d3bb"
+      ],
+      "has_study": [
+        "5e427a5c-a7a0-4eee-ba16-eab1bc598998"
+      ],
+      "id": "85b322c5-7890-446a-ba85-067fdbfa7bbc",
+      "title": "Whole genome bisufite sequencing for smoking and non-smoking mother-child pairs",
+      "type": "Methylation profiling by high-throughput sequencing",
+      "xref": [
+        "DATA_SET_marlboro-EEP-2013-03-15"
+      ]
+    },
+    {
+      "accession": "EGAD00001000884",
+      "creation_date": "2014-07-17T13:34.000Z",
+      "description": "In order to elucidate whether newly acquired genetic alterations during serial transplantation of patient derived primary pancreatic cancer cultures contribute to the observed clonal dynamics in vivo, all coding genes of two patient derived primary cultures and derived genetically marked serial xenografts (1\u00b0/2\u00b0/3\u00b0) were sequenced.",
+      "has_attribute": [
+        {
+          "key": "released",
+          "value": "RELEASED"
+        },
+        {
+          "key": "releasedDate",
+          "value": "2016-03-28T22:00.000Z"
+        },
+        {
+          "key": "centerName",
+          "value": "DKFZ-IBIOS"
+        }
+      ],
+      "has_data_access_policy": "fe267954-6535-43c2-b6dd-70102af5d34d",
+      "has_experiment": [
+        "f2990143-a977-4c01-be96-b2a72e5e6d03",
+        "c089d256-9411-44d1-a556-3babd41bdf7d",
+        "c9cf4bd8-b73b-4e83-9081-a843d78b0fde",
+        "89ff13b0-500a-4467-b037-15e7defb004c",
+        "7a66935a-5d4d-493e-9e29-84415228afb2",
+        "40c0c282-9bde-4a2c-82e0-6bdfb6609326",
+        "8a075459-a41a-491f-83a3-59375e18de01",
+        "a2cece0b-14e6-44d7-8839-ce3bb10c9765",
+        "ecc50722-ff07-452f-98cc-371aa0e7401e",
+        "f1e024b4-4bd0-4efd-b357-9b19524f3301"
+      ],
+      "has_study": [
+        "fbf3d647-a223-4b13-8e6e-6db76ffbe2d8"
+      ],
+      "id": "2c7e0e84-beea-49a3-9cd2-332fcedb1370",
+      "title": "Exome sequencing of serially transplanted genetically marked IC-enriched primary PDAC cultures.",
+      "type": "Exome sequencing",
+      "xref": [
+        "ena-DATASET-DKFZ-IBIOS-17-07-2014-15:54:18:121-70"
+      ]
+    }
+  ]
+}

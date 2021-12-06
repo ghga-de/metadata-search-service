@@ -1,0 +1,64 @@
+{
+  "samples": [
+    {
+      "has_biospecimen": "3b7e3e84-5165-44d4-a636-3a0a825c2491",
+      "has_individual": "9e8c8215-63ca-4bd9-9d90-1f117abcfb58",
+      "id": "b66a6217-0db0-4619-af77-6f1e19339aaa",
+      "name": "Sample 0 for Dataset 12461315-7bd4-40ff-9c2f-0e0fa4cd6c66"
+    },
+    {
+      "has_biospecimen": "d518bb1a-c831-41a7-89be-aa5ab50a8423",
+      "has_individual": "d2c01796-b84f-4f56-a5d8-a9c4fd5d008e",
+      "id": "514291f7-90f4-4f2a-8b51-9b3af84bea74",
+      "name": "Sample 1 for Dataset 12461315-7bd4-40ff-9c2f-0e0fa4cd6c66"
+    },
+    {
+      "has_biospecimen": "1707c217-c58a-4b07-a939-4a34faebb7b6",
+      "has_individual": "0df3dee0-f556-4c1b-9054-9a764a7dab67",
+      "id": "5db1f9a0-6753-4066-b5e6-fcf0bffd9b30",
+      "name": "Sample 2 for Dataset 12461315-7bd4-40ff-9c2f-0e0fa4cd6c66"
+    },
+    {
+      "has_biospecimen": "79013d7b-1807-4679-bab7-0eb101be75b2",
+      "has_individual": "1355606a-6dd7-4d46-b0fc-b8e09a11a86e",
+      "id": "1a12ef68-8412-4d77-bce1-87aacdb2f29d",
+      "name": "Sample 3 for Dataset 12461315-7bd4-40ff-9c2f-0e0fa4cd6c66"
+    },
+    {
+      "has_biospecimen": "16f375b9-cfeb-44dd-a421-c7849e93bf6e",
+      "has_individual": "4d8c48c3-c12b-4cdd-bf35-2d7b4ec7dc2b",
+      "id": "acb2a2d2-8d15-40cd-bf72-95a4276ac56f",
+      "name": "Sample 0 for Dataset 85b322c5-7890-446a-ba85-067fdbfa7bbc"
+    },
+    {
+      "has_biospecimen": "b021f005-1412-4d7a-ba1a-a8762404dc30",
+      "has_individual": "cc683f0d-70f2-4193-b137-ae396f77d884",
+      "id": "baed8a4f-ead5-4dd2-b239-23a21d9ad7b9",
+      "name": "Sample 1 for Dataset 85b322c5-7890-446a-ba85-067fdbfa7bbc"
+    },
+    {
+      "has_biospecimen": "699f4334-ec7b-4d23-8ba9-3b4612e934eb",
+      "has_individual": "38ff1955-879f-42c6-99df-d17d4752e1cc",
+      "id": "94e0bbcb-659b-4b50-ab86-19c864fdeaed",
+      "name": "Sample 2 for Dataset 85b322c5-7890-446a-ba85-067fdbfa7bbc"
+    },
+    {
+      "has_biospecimen": "6db2832a-a429-4656-aaae-f07a9fc92fad",
+      "has_individual": "66427812-536c-4ba0-b2b4-401635cdef28",
+      "id": "cecb5109-833e-49c7-9d43-4fee959870c9",
+      "name": "Sample 3 for Dataset 85b322c5-7890-446a-ba85-067fdbfa7bbc"
+    },
+    {
+      "has_biospecimen": "dc77cdca-f1a2-444a-adbf-f472a70bb06e",
+      "has_individual": "c3a97217-ca89-43ed-aae8-d91f721f3f9a",
+      "id": "a258ca41-7bd8-4b4e-96ec-cb7f22955a08",
+      "name": "Sample 4 for Dataset 85b322c5-7890-446a-ba85-067fdbfa7bbc"
+    },
+    {
+      "has_biospecimen": "16182a05-b5a2-44bd-892d-901470db16ff",
+      "has_individual": "a7170b00-badd-4843-8aa0-b48b8a09c222",
+      "id": "04f5d229-ca7c-403c-92c4-751895378af1",
+      "name": "Sample 5 for Dataset 85b322c5-7890-446a-ba85-067fdbfa7bbc"
+    }
+  ]
+}

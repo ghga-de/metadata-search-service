@@ -1,0 +1,83 @@
+{
+  "studies": [
+    {
+      "accession": "EGAS00001000274",
+      "creation_date": "2012-04-23T07:13.000Z",
+      "description": "Massively parallel sequencing has revolutionized research in cancer genetics and genomics and enhanced our understanding of natural human genetic variation. Recently, Lam et al. have performed a detailed comparison of two next-generation sequencing technologies with respect to their sensitivity to call single nucleotide variants (SNV) and indels. Here, we sequenced two tumor/normal pairs obtained from two paedriatic medulloblastoma patients with Life Technologies\u2019 SOLiD 4 and 5500xl SOLiD, Illumina\u2019s HiSeq2000, and Complete Genomics\u2019 technology.  We then compared their ability to call SNVs with high confidence. As gold standard for SNV calling, we used genotypes determined by an Affymetrix SNP array. Additionally, we performed a detailed analysis of how evenly each technology covers the genome and how the reads are distributed across functional genomic regions. Finally, we studied how a combination of data from different technologies might help to overcome the limitations in SNV calling by any of the four technologies alone.",
+      "has_attribute": [
+        {
+          "key": "centerName",
+          "value": "DKFZ-IBIOS"
+        },
+        {
+          "key": "released",
+          "value": "RELEASED"
+        },
+        {
+          "key": "published",
+          "value": true
+        }
+      ],
+      "id": "595c6fe1-1908-4596-b72a-ac89b7960375",
+      "title": "Coverage bias and sensitivity of variant calling for four whole-genome sequencing technologies",
+      "type": "Whole Genome Sequencing",
+      "xref": [
+        "Coverage_bias_sensitivity_of_variant_calling_for_4_WG_seq_tech"
+      ]
+    },
+    {
+      "accession": "EGAS00001000443",
+      "creation_date": "2013-02-28T11:24.000Z",
+      "description": "Ependymomas are common childhood brain tumours that occur throughout the nervous system, but are most common in the paediatric hindbrain. Current standard therapy comprises surgery and radiation, but not cytotoxic chemotherapy as it does not further increase survival. Whole-genome and whole-exome sequencing of 47 hindbrain ependymomas reveals an extremely low mutation rate, and zero significant recurrent somatic single nucleotide variants. Although devoid of recurrent single nucleotide variants and focal copy number aberrations, poor-prognosis hindbrain ependymomas exhibit a CpG island methylator phenotype. Transcriptional silencing driven by CpG methylation converges exclusively on targets of the Polycomb repressive complex 2 which represses expression of differentiation genes through trimethylation of H3K27. CpG island methylator phenotype-positive hindbrain ependymomas are responsive to clinical drugs that target either DNA or H3K27 methylation both in vitro and in vivo. We conclude that epigenetic modifiers are the first rational therapeutic candidates for this deadly malignancy, which is epigenetically deregulated but genetically bland.",
+      "has_attribute": [
+        {
+          "key": "centerName",
+          "value": "DKFZ-IBIOS"
+        },
+        {
+          "key": "released",
+          "value": "RELEASED"
+        },
+        {
+          "key": "published",
+          "value": true
+        }
+      ],
+      "id": "6a9d2211-a94e-4486-be29-7fc4e0d46bcb",
+      "title": "Epigenomic alterations define lethal CIMP-positive ependymomas of infancy",
+      "type": "Other",
+      "xref": [
+        "lindt_ependymoma_2013_02_28"
+      ]
+    },
+    {
+      "accession": "EGAS00001000455",
+      "creation_date": "2013-03-15T12:31.000Z",
+      "description": "Whole-blood samples of 16 mother-child pairs with differing maternal smoking behaviour were bisulfite treated and sequenced with deep coverage to identify smoking-associated differentially methylated regions.RNA-sequencing and ChIP-sequencing of 4 chromatin marks complete the data set and allow for integrative analyses, functional region annotation and to study the impact of epigenetic changes on gene expression.Longitudinal data spanning several years provides the means to investigate the stability of observed differences of all data types.",
+      "has_attribute": [
+        {
+          "key": "centerName",
+          "value": "DKFZ-IBIOS"
+        },
+        {
+          "key": "released",
+          "value": "RELEASED"
+        },
+        {
+          "key": "published",
+          "value": true
+        },
+        {
+          "key": "releasedDate",
+          "value": "2016-04-19T22:00.000Z"
+        }
+      ],
+      "id": "5e427a5c-a7a0-4eee-ba16-eab1bc598998",
+      "title": "Whole genome bisufite sequencing of smoking and non-smoking mother-child pairsBisufite sequencing, RNA-seq and ChIP-Seq data of whole blood samples from smoking and non-smoking mothers and their children at gestation/birth and follow-up years.",
+      "type": "Epigenetics",
+      "xref": [
+        "marlboro-EEP-2013-03-15"
+      ]
+    }
+  ]
+}
