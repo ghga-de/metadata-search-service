@@ -46,19 +46,22 @@ def test_index():
 
 
 @pytest.mark.parametrize(
-    "query,document_type,facet",
+    "query,document_type,return_facets",
     [
         ({"query": "*"}, "Dataset", False),
         ({"query": "*"}, "Study", True),
     ],
 )
 @pytest.mark.asyncio
-async def test_search(initialize_test_db, query, document_type, facet):  # noqa: F811
+async def test_search(
+    initialize_test_db, query, document_type, return_facets  # noqa: F811
+):
     response = client.post(
-        f"/rpc/search?document_type={document_type}&facet={facet}", json=query
+        f"/rpc/search?document_type={document_type}&return_facets={return_facets}",
+        json=query,
     )
     assert response.status_code == 200
     data = response.json()
     assert len(data["hits"]) > 0
-    if facet:
+    if return_facets:
         assert len(data["facets"]) > 0

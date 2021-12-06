@@ -44,7 +44,7 @@ async def index():
 async def search(
     query: SearchQuery,
     document_type: DocumentType,
-    facet: bool = False,
+    return_facets: bool = False,
     skip: int = 0,
     limit: int = 10,
     config: Config = Depends(get_config),
@@ -56,6 +56,12 @@ async def search(
             detail="Unexpected search query pattern."
             + " Only generic queries (`*`) are supported.",
         )
-    hits, facets = await get_documents(document_type, facet, skip, limit, config)
+    hits, facets = await get_documents(
+        document_type=document_type,
+        return_facets=return_facets,
+        skip=skip,
+        limit=limit,
+        config=config,
+    )
     response = {"facets": facets, "hits": hits}
     return response

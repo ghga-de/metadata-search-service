@@ -32,7 +32,7 @@ MAX_LIMIT = 100
 
 async def get_documents(
     document_type: str,
-    facet: bool = False,
+    return_facets: bool = False,
     skip: int = 0,
     limit: int = 10,
     config: Config = get_config(),
@@ -42,12 +42,12 @@ async def get_documents(
 
     Args:
         document_type: The type of document
+        return_facets: Whether or not to facet. Defaults to False
         skip: The number of documents to skip
         limit: The total number of documents to retrieve
-        facet: Whether or not to facet. Defaults to False
 
     Returns:
-        A list of documents with facets and a list of facets, if ``facet=True``
+        A list of documents with facets and a list of facets, if ``return_facets=True``
 
     """
     docs = await _get_documents(
@@ -55,7 +55,7 @@ async def get_documents(
     )
     hits = [{"document_type": document_type, "id": x["id"], "content": x} for x in docs]
     facets = []
-    if facet:
+    if return_facets:
         facet_stats = await generate_facets(
             docs, facet_fields=DEFAULT_FACET_FIELDS[document_type]
         )
@@ -70,7 +70,7 @@ async def get_documents(
 
 
 async def _get_documents(
-    collection_name, skip: int = 0, limit: int = 10, config: Config = get_config()
+    collection_name: str, skip: int = 0, limit: int = 10, config: Config = get_config()
 ):
     """
     Get documents from a given ``collection_name``.
