@@ -17,6 +17,7 @@
 import logging
 from typing import Any, Dict, List, Set, Tuple
 
+from functools import lru_cache
 import stringcase
 from pymongo import ASCENDING
 
@@ -78,6 +79,7 @@ async def _get_documents(collection_name: str, config: Config = get_config()) ->
     return docs
 
 
+@lru_cache()
 async def _get_reference(
     document_id: str, collection_name: str, config: Config = get_config()
 ) -> Dict:
