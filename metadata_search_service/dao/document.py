@@ -15,9 +15,9 @@
 """DAO for retrieving a document from the metadata store"""
 
 import logging
+from functools import lru_cache
 from typing import Any, Dict, List, Set, Tuple
 
-from functools import lru_cache
 import stringcase
 from pymongo import ASCENDING
 
@@ -27,22 +27,32 @@ from metadata_search_service.dao.db import get_db_client
 
 # pylint: disable=too-many-locals, too-many-nested-blocks, too-many-branches
 
+MAX_LIMIT = 100
+
 
 async def get_documents(
-    document_type: str, facet: bool = False, config: Config = get_config()
+    document_type: str,
+    facet: bool = False,
+    skip: int = 0,
+    limit: int = 10,
+    config: Config = get_config(),
 ) -> Tuple[List, List]:
     """
     Get documents for a given document type.
 
     Args:
         document_type: The type of document
+        skip: The number of documents to skip
+        limit: The total number of documents to retrieve
         facet: Whether or not to facet. Defaults to False
 
     Returns:
         A list of documents with facets and a list of facets, if ``facet=True``
 
     """
-    docs = await _get_documents(document_type, config)
+    docs = await _get_documents(
+        document_type, skip=skip, limit=min(limit, MAX_LIMIT), config=config
+    )
     hits = [{"document_type": document_type, "id": x["id"], "content": x} for x in docs]
     facets = []
     if facet:
@@ -59,12 +69,16 @@ async def get_documents(
     return hits, facets
 
 
-async def _get_documents(collection_name: str, config: Config = get_config()) -> List:
+async def _get_documents(
+    collection_name, skip: int = 0, limit: int = 10, config: Config = get_config()
+):
     """
     Get documents from a given ``collection_name``.
 
     Args:
         collection_name: The name of the collection from which to fetch the documents
+        skip: The number of documents to skip
+        limit: The total number of documents to retrieve
 
     Returns:
         A list of documents from the collection
@@ -72,7 +86,8 @@ async def _get_documents(collection_name: str, config: Config = get_config()) ->
     """
     client = await get_db_client(config.db_url)
     collection = client[config.db_name][collection_name]
-    docs = await collection.find().sort("id", ASCENDING).to_list(None)  # type: ignore
+    cursor = collection.find().sort("id", ASCENDING).skip(skip).limit(limit)  # type: ignore
+    docs = await cursor.to_list(None)
     for doc in docs:
         del doc["_id"]
     client.close()

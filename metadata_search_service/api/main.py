@@ -25,6 +25,8 @@ from metadata_search_service.config import Config, get_config
 from metadata_search_service.dao.document import get_documents
 from metadata_search_service.models import DocumentType, SearchQuery, SearchResult
 
+# pylint: disable=too-many-arguments
+
 app = FastAPI()
 
 
@@ -43,6 +45,8 @@ async def search(
     query: SearchQuery,
     document_type: DocumentType,
     facet: bool = False,
+    skip: int = 0,
+    limit: int = 10,
     config: Config = Depends(get_config),
 ):
     """Search metadata based on a given query string."""
@@ -52,6 +56,6 @@ async def search(
             detail="Unexpected search query pattern."
             + " Only generic queries (`*`) are supported.",
         )
-    hits, facets = await get_documents(document_type, facet, config)
+    hits, facets = await get_documents(document_type, facet, skip, limit, config)
     response = {"facets": facets, "hits": hits}
     return response

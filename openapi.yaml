@@ -169,6 +169,20 @@ paths:
           default: false
           title: Facet
           type: boolean
+      - in: query
+        name: skip
+        required: false
+        schema:
+          default: 0
+          title: Skip
+          type: integer
+      - in: query
+        name: limit
+        required: false
+        schema:
+          default: 10
+          title: Limit
+          type: integer
       requestBody:
         content:
           application/json:
