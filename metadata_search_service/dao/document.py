@@ -45,53 +45,100 @@ async def get_documents(
         return_facets: Whether or not to facet. Defaults to False
         skip: The number of documents to skip
         limit: The total number of documents to retrieve
+        config: The config
 
     Returns:
         A list of documents with facets and a list of facets, if ``return_facets=True``
 
     """
-    docs = await _get_documents(
-        document_type, skip=skip, limit=min(limit, MAX_LIMIT), config=config
+    docs, facet_results = await _get_documents(
+        document_type,
+        return_facets=return_facets,
+        skip=skip,
+        limit=min(limit, MAX_LIMIT),
+        config=config,
     )
     hits = [{"document_type": document_type, "id": x["id"], "content": x} for x in docs]
     facets = []
-    if return_facets:
-        facet_stats = await generate_facets(
-            docs, facet_fields=DEFAULT_FACET_FIELDS[document_type]
-        )
-        for key in facet_stats.keys():
-            formatted_facet = {"key": key, "options": []}
-            for stat_key, stat_value in facet_stats[key].items():
-                formatted_facet["options"].append(
-                    {"option": stat_key, "count": stat_value}
-                )
-            facets.append(formatted_facet)
+    if return_facets and facet_results:
+        facet_result = facet_results[0]
+        for key, value in facet_result.items():
+            facet = {
+                "key": key.replace("__", "."),
+                "options": [
+                    {"option": x["_id"] if x["_id"] else "", "count": x["count"]}
+                    for x in value
+                ],
+            }
+            facets.append(facet)
     return hits, facets
 
 
 async def _get_documents(
-    collection_name: str, skip: int = 0, limit: int = 10, config: Config = get_config()
-):
+    collection_name: str,
+    return_facets: bool = False,
+    skip: int = 0,
+    limit: int = 10,
+    config: Config = get_config(),
+) -> Tuple[List, List]:
     """
     Get documents from a given ``collection_name``.
 
     Args:
         collection_name: The name of the collection from which to fetch the documents
         skip: The number of documents to skip
+        return_facets: Whether or not to facet. Defaults to False
         limit: The total number of documents to retrieve
+        config: The config
 
     Returns:
-        A list of documents from the collection
+        A list of documents from the collection and a list of facets
 
     """
     client = await get_db_client(config)
     collection = client[config.db_name][collection_name]
-    cursor = collection.find().sort("id", ASCENDING).skip(skip).limit(limit)  # type: ignore
-    docs = await cursor.to_list(None)
-    for doc in docs:
-        del doc["_id"]
-    client.close()
-    return docs
+    docs = await collection.find({}, {"_id": 0}).sort("id", ASCENDING).skip(skip).limit(limit).to_list(None)  # type: ignore
+    facets = []
+    if return_facets:
+        facet_fields = DEFAULT_FACET_FIELDS[collection_name]
+        facets = {}
+        if facet_fields:
+            query = _build_aggregation_query(facet_fields=facet_fields)
+            print(f"[_get_documents_new] facet query: {query}")
+            facets = await collection.aggregate(query).to_list(None)
+            print(f"[_get_documents_new] facets: {facets}")
+    return docs, facets
+
+
+def _build_aggregation_query(
+    search_query: str = "", filter_fields: Set = {}, facet_fields: Set = {}
+) -> str:
+    """
+    Build an aggregation query by generating pipelines and sub-pipelines that
+    can be used to query the underlying MongoDB store.
+
+    """
+    query_template = []
+    if facet_fields:
+        facet_pipeline_template = {"$facet": {}}
+        for field in facet_fields:
+            if "." not in field:
+                # field is a top level field
+                sub_pipeline = {
+                    field: [{"$unwind": f"${field}"}, {"$sortByCount": f"${field}"}]
+                }
+            else:
+                # field is a nested field
+                top_level_field, nested_field = field.split(".", 1)
+                sub_pipeline = {
+                    field.replace(".", "__"): [
+                        {"$unwind": f"${top_level_field}"},
+                        {"$sortByCount": f"${nested_field}"},
+                    ]
+                }
+            facet_pipeline_template["$facet"].update(sub_pipeline)
+        query_template.append(facet_pipeline_template)
+    return query_template
 
 
 @lru_cache()
