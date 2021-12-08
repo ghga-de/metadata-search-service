@@ -17,10 +17,10 @@
 
 from motor.motor_asyncio import AsyncIOMotorClient
 
-from metadata_search_service.config import Config, get_config
+from metadata_search_service.config import CONFIG, Config
 
 
-async def get_db_client(config: Config = get_config()) -> AsyncIOMotorClient:
+async def get_db_client(config: Config = CONFIG) -> AsyncIOMotorClient:
     """
     Get database client.
     """
