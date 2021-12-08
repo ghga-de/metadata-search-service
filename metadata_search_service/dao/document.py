@@ -21,7 +21,7 @@ from typing import Any, Dict, List, Set, Tuple
 import stringcase
 from pymongo import ASCENDING
 
-from metadata_search_service.config import Config, get_config
+from metadata_search_service.config import CONFIG, Config
 from metadata_search_service.core.utils import DEFAULT_FACET_FIELDS
 from metadata_search_service.dao.db import get_db_client
 
@@ -35,7 +35,7 @@ async def get_documents(
     return_facets: bool = False,
     skip: int = 0,
     limit: int = 10,
-    config: Config = get_config(),
+    config: Config = CONFIG,
 ) -> Tuple[List, List]:
     """
     Get documents for a given document type.
@@ -70,7 +70,7 @@ async def get_documents(
 
 
 async def _get_documents(
-    collection_name: str, skip: int = 0, limit: int = 10, config: Config = get_config()
+    collection_name: str, skip: int = 0, limit: int = 10, config: Config = CONFIG
 ):
     """
     Get documents from a given ``collection_name``.
@@ -96,7 +96,7 @@ async def _get_documents(
 
 @lru_cache()
 async def _get_reference(
-    document_id: str, collection_name: str, config: Config = get_config()
+    document_id: str, collection_name: str, config: Config = CONFIG
 ) -> Dict:
     """
     Given a document ID and a collection name, query the metadata store

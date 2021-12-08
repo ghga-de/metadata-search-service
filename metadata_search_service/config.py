@@ -31,5 +31,7 @@ class Config(ApiConfigBase, PubSubConfigBase):
     db_url: str = "mongodb://localhost:27017"
     db_name: str = "metadata-store"
 
+    service_name: str = "metadata-search-service"
+
 
 CONFIG = Config()
