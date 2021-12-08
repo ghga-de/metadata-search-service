@@ -17,11 +17,10 @@
 
 from ghga_service_chassis_lib.api import ApiConfigBase
 from ghga_service_chassis_lib.config import config_from_yaml
-from ghga_service_chassis_lib.pubsub import PubSubConfigBase
 
 
 @config_from_yaml(prefix="metadata_search_service")
-class Config(ApiConfigBase, PubSubConfigBase):
+class Config(ApiConfigBase):
     """Config parameters and their defaults."""
 
     # config parameter needed for the api server
@@ -30,8 +29,6 @@ class Config(ApiConfigBase, PubSubConfigBase):
     # are inherited from PubSubConfigBase;
     db_url: str = "mongodb://localhost:27017"
     db_name: str = "metadata-store"
-
-    service_name: str = "metadata-search-service"
 
 
 CONFIG = Config()
