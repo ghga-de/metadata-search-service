@@ -20,14 +20,17 @@ Additional endpoints might be structured in dedicated modules
 """
 
 from fastapi import Depends, FastAPI, HTTPException
+from ghga_service_chassis_lib.api import configure_app
 
-from metadata_search_service.config import Config, get_config
+from metadata_search_service.api.deps import get_config
+from metadata_search_service.config import CONFIG, Config
 from metadata_search_service.dao.document import get_documents
 from metadata_search_service.models import DocumentType, SearchQuery, SearchResult
 
 # pylint: disable=too-many-arguments
 
 app = FastAPI()
+configure_app(app, config=CONFIG)
 
 
 @app.get("/", summary="Index for Metadata Search Service")

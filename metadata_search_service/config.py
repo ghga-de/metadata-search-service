@@ -15,8 +15,6 @@
 
 """Config Parameter Modeling and Parsing"""
 
-from functools import lru_cache
-
 from ghga_service_chassis_lib.api import ApiConfigBase
 from ghga_service_chassis_lib.config import config_from_yaml
 from ghga_service_chassis_lib.pubsub import PubSubConfigBase
@@ -34,7 +32,4 @@ class Config(ApiConfigBase, PubSubConfigBase):
     db_name: str = "metadata-store"
 
 
-@lru_cache
-def get_config():
-    """Get runtime configuration."""
-    return Config()
+CONFIG = Config()
