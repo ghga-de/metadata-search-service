@@ -5,3 +5,6 @@ workers: 1
 auto_reload: true
 db_url: mongodb://localhost:27017
 db_name: metadata-store
+api_root_path: "/"
+openapi_url: "/openapi.json"
+docs_url: "/docs"

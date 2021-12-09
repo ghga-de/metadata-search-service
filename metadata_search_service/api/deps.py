@@ -13,19 +13,11 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-"""Entrypoint of the package"""
+"""FastAPI dependencies (used with the `Depends` feature)"""
 
-from ghga_service_chassis_lib.api import run_server
-
-from .api.main import app  # noqa: F401 pylint: disable=unused-import
-from .config import CONFIG, Config
+from metadata_search_service.config import CONFIG
 
 
-def run(config: Config = CONFIG):
-    """Run the service"""
-    # Please adapt to package name
-    run_server(app="metadata_search_service.__main__:app", config=config)
-
-
-if __name__ == "__main__":
-    run()
+def get_config():
+    """Get runtime configuration."""
+    return CONFIG
