@@ -1,24 +1,24 @@
 {
-    "projects": [
-        {
-            "id": "23b614aa-8eee-4d09-b3db-30f7524ebf57",
-            "name": "Project for Study 6c41f0c2-8145-468a-8d79-63ef900d0e2b"
-        },
-        {
-            "id": "e5664b5b-7c5e-4ade-ae06-8c028a3bbb9f",
-            "name": "Project for Study c5460116-53fb-4d18-9914-7970fa08e874"
-        },
-        {
-            "id": "6a920e05-4714-4644-abcd-ae8c3697717a",
-            "name": "Project for Study 2ec70382-b309-448a-be8d-2ad9ae1f5cc2"
-        },
-        {
-            "id": "99cfc7cd-8225-40a2-98be-ce369eef2aaf",
-            "name": "Project for Study 6e5cc3c8-62f6-4c5c-b4ad-70393cf871ee"
-        },
-        {
-            "id": "3973323e-3a78-48a5-947b-1f95563cac52",
-            "name": "Project for Study 619ba0a7-1baf-4abb-b171-90b37e4734bd"
-        }
-   ]
+  "projects": [
+    {
+      "id": "23b614aa-8eee-4d09-b3db-30f7524ebf57",
+      "name": "Project for Study 6c41f0c2-8145-468a-8d79-63ef900d0e2b"
+    },
+    {
+      "id": "e5664b5b-7c5e-4ade-ae06-8c028a3bbb9f",
+      "name": "Project for Study c5460116-53fb-4d18-9914-7970fa08e874"
+    },
+    {
+      "id": "6a920e05-4714-4644-abcd-ae8c3697717a",
+      "name": "Project for Study 2ec70382-b309-448a-be8d-2ad9ae1f5cc2"
+    },
+    {
+      "id": "99cfc7cd-8225-40a2-98be-ce369eef2aaf",
+      "name": "Project for Study 6e5cc3c8-62f6-4c5c-b4ad-70393cf871ee"
+    },
+    {
+      "id": "3973323e-3a78-48a5-947b-1f95563cac52",
+      "name": "Project for Study 619ba0a7-1baf-4abb-b171-90b37e4734bd"
+    }
+  ]
 }

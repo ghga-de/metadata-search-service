@@ -1,79 +1,79 @@
 {
-    "data_access_policies": [
-        {
-            "id": "b5e86602-7dce-48c9-a2a7-b6e53be1aa04",
-            "accession": "EGAP00001000221",
-            "has_data_access_committee": "6253fe54-60d3-41d9-a241-f96f47235d3f"
-        },
-        {
-            "id": "9ea275bc-acd7-4989-af5d-d01ffaaeb1c1",
-            "accession": "EGAP00001000441",
-            "has_data_access_committee": "176d477f-ca43-4225-be30-c9829f11a417"
-        },
-        {
-            "id": "b58258d1-1781-4889-b4e0-0380ec38237a",
-            "accession": "EGAP00001000220",
-            "has_data_access_committee": "e8fc903b-e7b4-49d5-a4a4-d1a3fa503387"
-        },
-        {
-            "id": "a28a8546-6897-49eb-a6c4-4a37d2e837ee",
-            "accession": "EGAP00001000335",
-            "has_data_access_committee": "ff2a3b05-d073-4295-b15b-aa4b44b7ff09"
-        },
-        {
-            "id": "2d34d656-3fc5-4249-b066-91024032a3f9",
-            "accession": "EGAP00001000369",
-            "has_data_access_committee": "71aff619-589d-42a5-8fb8-9015ed1b783d"
-        },
-        {
-            "id": "4588a531-4f68-4fda-b32d-8f140a1a508e",
-            "accession": "EGAP00001000456",
-            "has_data_access_committee": "8ca79f9a-7ba0-4689-8265-f336dc19aba6"
-        },
-        {
-            "id": "a224a0a7-bcbc-4227-9863-a9c99df54557",
-            "accession": "EGAP00001000171",
-            "has_data_access_committee": "2a346644-3632-4b3e-878c-baaf2cfdbdd0"
-        },
-        {
-            "id": "05646c22-12e9-4b92-bd1f-294eb2e8e5d9",
-            "accession": "EGAP00001000687",
-            "has_data_access_committee": "6253fe54-60d3-41d9-a241-f96f47235d3f"
-        },
-        {
-            "id": "4e93eab8-edf6-41c7-9027-2e77ce4958e6",
-            "accession": "EGAP00001000889",
-            "has_data_access_committee": "6d4c45e8-5eac-480b-b947-8fa372dbc142"
-        },
-        {
-            "id": "1ca1d27e-0a9d-4ac9-af0c-deec776d586c",
-            "accession": "EGAP00001000962",
-            "has_data_access_committee": "5da8b7a9-fcf0-46d2-84e3-7177f5cae001"
-        },
-        {
-            "id": "babc6b24-ecd4-48d0-ba9f-b52857b184f3",
-            "accession": "EGAP00001001035",
-            "has_data_access_committee": "13b78d5e-0ac8-42a0-ba23-6bbc9b3b1076"
-        },
-        {
-            "id": "ad69799e-02ac-4dd2-97a2-b790da73d2ad",
-            "accession": "EGAP00001001056",
-            "has_data_access_committee": "59a644fd-09e8-47d0-bf94-f88835fb49ee"
-        },
-        {
-            "id": "12523f2f-7a16-4429-9c23-09bdec310ae9",
-            "accession": "EGAP00001001086",
-            "has_data_access_committee": "80222b06-dcda-489d-8a5d-5abad75f54d4"
-        },
-        {
-            "id": "84ddd42e-5f4f-423e-8d32-51f7a3463360",
-            "accession": "EGAP00001001314",
-            "has_data_access_committee": "d1b64c21-7874-43f7-8f38-ed2b598cf957"
-        },
-        {
-            "id": "92b8a3b4-d8ce-4b32-8615-717fb1c429af",
-            "accession": "EGAP00001000506",
-            "has_data_access_committee": "c7563b91-bb18-43a6-99e2-cd07543d1843"
-        }
-    ]
+  "data_access_policies": [
+    {
+      "accession": "EGAP00001000221",
+      "has_data_access_committee": "6253fe54-60d3-41d9-a241-f96f47235d3f",
+      "id": "b5e86602-7dce-48c9-a2a7-b6e53be1aa04"
+    },
+    {
+      "accession": "EGAP00001000441",
+      "has_data_access_committee": "176d477f-ca43-4225-be30-c9829f11a417",
+      "id": "9ea275bc-acd7-4989-af5d-d01ffaaeb1c1"
+    },
+    {
+      "accession": "EGAP00001000220",
+      "has_data_access_committee": "e8fc903b-e7b4-49d5-a4a4-d1a3fa503387",
+      "id": "b58258d1-1781-4889-b4e0-0380ec38237a"
+    },
+    {
+      "accession": "EGAP00001000335",
+      "has_data_access_committee": "ff2a3b05-d073-4295-b15b-aa4b44b7ff09",
+      "id": "a28a8546-6897-49eb-a6c4-4a37d2e837ee"
+    },
+    {
+      "accession": "EGAP00001000369",
+      "has_data_access_committee": "71aff619-589d-42a5-8fb8-9015ed1b783d",
+      "id": "2d34d656-3fc5-4249-b066-91024032a3f9"
+    },
+    {
+      "accession": "EGAP00001000456",
+      "has_data_access_committee": "8ca79f9a-7ba0-4689-8265-f336dc19aba6",
+      "id": "4588a531-4f68-4fda-b32d-8f140a1a508e"
+    },
+    {
+      "accession": "EGAP00001000171",
+      "has_data_access_committee": "2a346644-3632-4b3e-878c-baaf2cfdbdd0",
+      "id": "a224a0a7-bcbc-4227-9863-a9c99df54557"
+    },
+    {
+      "accession": "EGAP00001000687",
+      "has_data_access_committee": "6253fe54-60d3-41d9-a241-f96f47235d3f",
+      "id": "05646c22-12e9-4b92-bd1f-294eb2e8e5d9"
+    },
+    {
+      "accession": "EGAP00001000889",
+      "has_data_access_committee": "6d4c45e8-5eac-480b-b947-8fa372dbc142",
+      "id": "4e93eab8-edf6-41c7-9027-2e77ce4958e6"
+    },
+    {
+      "accession": "EGAP00001000962",
+      "has_data_access_committee": "5da8b7a9-fcf0-46d2-84e3-7177f5cae001",
+      "id": "1ca1d27e-0a9d-4ac9-af0c-deec776d586c"
+    },
+    {
+      "accession": "EGAP00001001035",
+      "has_data_access_committee": "13b78d5e-0ac8-42a0-ba23-6bbc9b3b1076",
+      "id": "babc6b24-ecd4-48d0-ba9f-b52857b184f3"
+    },
+    {
+      "accession": "EGAP00001001056",
+      "has_data_access_committee": "59a644fd-09e8-47d0-bf94-f88835fb49ee",
+      "id": "ad69799e-02ac-4dd2-97a2-b790da73d2ad"
+    },
+    {
+      "accession": "EGAP00001001086",
+      "has_data_access_committee": "80222b06-dcda-489d-8a5d-5abad75f54d4",
+      "id": "12523f2f-7a16-4429-9c23-09bdec310ae9"
+    },
+    {
+      "accession": "EGAP00001001314",
+      "has_data_access_committee": "d1b64c21-7874-43f7-8f38-ed2b598cf957",
+      "id": "84ddd42e-5f4f-423e-8d32-51f7a3463360"
+    },
+    {
+      "accession": "EGAP00001000506",
+      "has_data_access_committee": "c7563b91-bb18-43a6-99e2-cd07543d1843",
+      "id": "92b8a3b4-d8ce-4b32-8615-717fb1c429af"
+    }
+  ]
 }
