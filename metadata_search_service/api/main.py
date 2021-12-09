@@ -49,15 +49,19 @@ async def search(
     limit: int = 10,
     config: Config = Depends(get_config),
 ):
-    """Search metadata based on a given query string."""
-    if query.query != "*":
+    """Search metadata based on a given query string and filters."""
+    if skip < 0:
         raise HTTPException(
-            status_code=400,
-            detail="Unexpected search query pattern."
-            + " Only generic queries (`*`) are supported.",
+            status_code=400, detail="'skip' parameter must be greater than 0"
+        )
+    if limit < 1:
+        raise HTTPException(
+            status_code=400, detail="'limit' parameter must be greater than 1"
         )
     hits, facets = await get_documents(
+        search_query=query.query,
         document_type=document_type,
+        filters=query.filters,
         return_facets=return_facets,
         skip=skip,
         limit=limit,
