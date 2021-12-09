@@ -1,0 +1,84 @@
+{
+    "technologies": [
+        {
+            "id": "f6f4c62b-c0b1-4638-b37e-0104825a9d4c",
+            "name": "AB SOLiD 4 System, Complete Genomics, Illumina HiSeq 2000, unspecified"
+        },
+        {
+            "id": "fa2aabd6-f291-43eb-ab12-090abb939e72",
+            "name": "Illumina HiSeq 2000"
+        },
+        {
+            "id": "a2544f77-5948-4aa8-9429-db233961f942",
+            "name": ""
+        },
+        {
+            "id": "e28d0ef8-527b-4f55-b8ee-19a49d72b58e",
+            "name": "Illumina HiSeq 2500"
+        },
+        {
+            "id": "d5f5ac4a-6901-43e2-8d08-877f43cc2106",
+            "name": "Illumina HiSeq 2000, Illumina HiSeq 2500"
+        },
+        {
+            "id": "e88b408c-a381-45ba-9b1c-af35a658f311",
+            "name": "Illumina MiSeq"
+        },
+        {
+            "id": "d43b8777-cd7e-4107-808b-b8d7f3c154a5",
+            "name": "HiSeq X Ten"
+        },
+        {
+            "id": "1349e760-03fa-4303-843f-8b232bb007d5",
+            "name": "Illumina HiSeq 2000, Illumina HiSeq 4000"
+        },
+        {
+            "id": "95e18a37-c2a7-4e6f-af19-3921c1878127",
+            "name": "HiSeq X Ten, Illumina HiSeq 2500, Illumina HiSeq 4000"
+        },
+        {
+            "id": "b86a4522-fea6-4624-afb4-c17a1d4e3b06",
+            "name": "Illumina HiSeq 2000, NextSeq 500"
+        },
+        {
+            "id": "2d348b9e-0fbc-4756-84d1-598ad4520092",
+            "name": "Ion Torrent Proton"
+        },
+        {
+            "id": "dad25ffb-24d1-4a0d-87d4-207118283bb9",
+            "name": "NextSeq 500"
+        },
+        {
+            "id": "98a0be02-2f95-4c33-b979-552179501bc8",
+            "name": "Illumina CytoSNP"
+        },
+        {
+            "id": "2bbff225-729c-4f73-927b-f58e28424c29",
+            "name": "Illumina 450k"
+        },
+        {
+            "id": "b5ef445d-7b59-4154-a5eb-9e92833216d9",
+            "name": "Illumina HumanOmni2.5"
+        },
+        {
+            "id": "dfdfa5f8-ff2d-4ee3-8189-1793c309f6c7",
+            "name": "Illumina 450K"
+        },
+        {
+            "id": "24abd399-c326-4b85-8594-557ab15dc962",
+            "name": "Affymetrix GeneChip miRNA 4.0"
+        },
+        {
+            "id": "0fb5fe34-0394-4d43-8b37-8e884cccce3b",
+            "name": "Affymetrix Human Transcriptome Array 2.0"
+        },
+        {
+            "id": "7b4ace76-3910-4a50-9577-0b34bacd963b",
+            "name": "Illumina EPIC methylation bead array"
+        },
+        {
+            "id": "b297a125-72e4-4e5b-86c2-8e197e8bb1f3",
+            "name": "Illumina 450k methylation bead array"
+        }
+    ]
+}

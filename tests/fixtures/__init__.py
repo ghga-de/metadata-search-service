@@ -41,3 +41,6 @@ async def initialize_test_db():
         await db_client["metadata-store-test"][collection_name].insert_many(
             objects[filename.split(".")[0]]
         )
+        await db_client["metadata-store-test"][collection_name].create_index(
+            [("$**", "text")]
+        )
