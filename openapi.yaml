@@ -154,7 +154,7 @@ paths:
       summary: Index for Metadata Search Service
   /rpc/search:
     post:
-      description: Search metadata based on a given query string.
+      description: Search metadata based on a given query string and filters.
       operationId: search_rpc_search_post
       parameters:
       - in: query
