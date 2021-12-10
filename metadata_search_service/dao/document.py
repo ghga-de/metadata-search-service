@@ -15,8 +15,9 @@
 """DAO for retrieving a document from the metadata store"""
 
 import logging
-from functools import lru_cache
-from typing import Dict, List, Tuple
+from typing import Any, Dict, List, Set, Tuple
+import stringcase
+from pymongo import ASCENDING
 
 from metadata_search_service.config import CONFIG, Config
 from metadata_search_service.core.utils import (
@@ -137,7 +138,6 @@ async def _get_documents(
     return docs, facets
 
 
-@lru_cache()
 async def _get_reference(
     document_id: str, collection_name: str, config: Config = CONFIG
 ) -> Dict:
