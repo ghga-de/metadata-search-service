@@ -15,7 +15,6 @@
 """DAO for retrieving a document from the metadata store"""
 
 import logging
-from functools import lru_cache
 from typing import Any, Dict, List, Set, Tuple
 
 import stringcase
