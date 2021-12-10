@@ -94,7 +94,6 @@ async def _get_documents(
     return docs
 
 
-@lru_cache()
 async def _get_reference(
     document_id: str, collection_name: str, config: Config = CONFIG
 ) -> Dict:
