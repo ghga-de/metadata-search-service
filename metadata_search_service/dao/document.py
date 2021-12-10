@@ -15,9 +15,7 @@
 """DAO for retrieving a document from the metadata store"""
 
 import logging
-from typing import Any, Dict, List, Set, Tuple
-import stringcase
-from pymongo import ASCENDING
+from typing import Dict, List, Tuple
 
 from metadata_search_service.config import CONFIG, Config
 from metadata_search_service.core.utils import (
