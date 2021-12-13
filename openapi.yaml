@@ -17,9 +17,11 @@ components:
       description: Represents a facet and the possible values for that facet.
       properties:
         key:
+          description: The facet key
           title: Key
           type: string
         options:
+          description: One or more values and their counts
           items:
             $ref: '#/components/schemas/FacetOption'
           title: Options
@@ -33,9 +35,12 @@ components:
       description: Represent values and their corresponding count for a facet.
       properties:
         count:
+          description: The count that represents number of documents that has this
+            facet value
           title: Count
           type: integer
         option:
+          description: One of the values for facet
           title: Option
           type: string
       required:
@@ -46,9 +51,11 @@ components:
       description: Represents a Filter option.
       properties:
         key:
+          description: The filter key
           title: Key
           type: string
         value:
+          description: The filter value
           title: Value
           type: string
       required:
@@ -69,14 +76,19 @@ components:
       description: Represents the Search Hit.
       properties:
         content:
+          description: The full document of the search hit
           title: Content
           type: object
         context:
+          description: The context where this search hit was found
           title: Context
           type: string
         document_type:
-          $ref: '#/components/schemas/DocumentType'
+          allOf:
+          - $ref: '#/components/schemas/DocumentType'
+          description: The type of document
         id:
+          description: The unique identifier of the document
           title: Id
           type: string
       required:
@@ -88,11 +100,13 @@ components:
       description: Represents the Search Query.
       properties:
         filters:
+          description: One or more filters to apply when performing a search
           items:
             $ref: '#/components/schemas/FilterOption'
           title: Filters
           type: array
         query:
+          description: The query string to use for search
           title: Query
           type: string
       required:
@@ -102,18 +116,25 @@ components:
     SearchResult:
       description: Represents the Search Result.
       properties:
+        count:
+          description: Number of hits
+          title: Count
+          type: integer
         facets:
+          description: One or more facets that summarizes the hits
           items:
             $ref: '#/components/schemas/Facet'
           title: Facets
           type: array
         hits:
+          description: One or more search hits
           items:
             $ref: '#/components/schemas/SearchHit'
           title: Hits
           type: array
       required:
       - facets
+      - count
       - hits
       title: SearchResult
       type: object
