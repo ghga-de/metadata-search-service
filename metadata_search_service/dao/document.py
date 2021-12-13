@@ -36,7 +36,7 @@ async def get_documents(
     skip: int = 0,
     limit: int = 10,
     config: Config = CONFIG,
-) -> Tuple[List, List]:
+) -> Tuple[List, List, int]:
     """
     Get documents for a given document type.
 
@@ -52,7 +52,7 @@ async def get_documents(
         A list of documents with facets and a list of facets, if ``return_facets=True``
 
     """
-    docs, facet_results = await _get_documents(
+    docs, facet_results, count = await _get_documents(
         document_type,
         search_query=search_query,
         filters=filters,
@@ -81,7 +81,7 @@ async def get_documents(
                     }
                     facet["options"].append(facet_option)
                 facets.append(facet)
-    return hits, facets
+    return hits, facets, count
 
 
 async def _get_documents(
@@ -92,7 +92,7 @@ async def _get_documents(
     skip: int = 0,
     limit: int = 10,
     config: Config = CONFIG,
-) -> Tuple[List, List]:
+) -> Tuple[List, List, int]:
     """
     Get documents from a given ``collection_name``.
 
@@ -126,14 +126,33 @@ async def _get_documents(
 
     [results] = await collection.aggregate(query).to_list(None)
     docs = results["data"]
-
+    count = await _get_count(results)
     facets = []
     if return_facets:
         for key in results.keys():
             if key not in {"data", "metadata"}:
                 facet = {key: results[key]}
                 facets.append(facet)
-    return docs, facets
+    return docs, facets, count
+
+
+async def _get_count(results: Dict) -> int:
+    """
+    Extract the total number of hits as reported by MongoDB
+
+    Args:
+        results: The results object from MongoDB
+
+    Returns
+        The total number of hits as reported by MongoDB
+
+    """
+    count = 0
+    if "metadata" in results:
+        if results["metadata"]:
+            [total] = results["metadata"]
+            count = total["total"]
+    return count
 
 
 async def _get_reference(
