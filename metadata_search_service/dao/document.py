@@ -33,7 +33,7 @@ async def get_documents(
     skip: int = 0,
     limit: int = 10,
     config: Config = CONFIG,
-) -> Tuple[List, List]:
+) -> Tuple[List[Dict], List[Dict]]:
     """
     Get documents for a given document type.
 
@@ -89,7 +89,7 @@ async def _get_documents(
     skip: int = 0,
     limit: int = 10,
     config: Config = CONFIG,
-) -> Tuple[List, List]:
+) -> Tuple[List[Dict], List[Dict]]:
     """
     Get documents from a given ``collection_name``.
 
