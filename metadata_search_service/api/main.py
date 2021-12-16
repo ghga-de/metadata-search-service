@@ -55,11 +55,13 @@ async def search(
     """Search metadata based on a given query string and filters."""
     if skip < 0:
         raise HTTPException(
-            status_code=400, detail="'skip' parameter must be greater than 0"
+            status_code=400,
+            detail="'skip' parameter must be greater than or equal to 0",
         )
     if limit < 1:
         raise HTTPException(
-            status_code=400, detail="'limit' parameter must be greater than 1"
+            status_code=400,
+            detail="'limit' parameter must be greater than or equal to 1",
         )
     hits, facets = await get_documents(
         search_query=query.query,
