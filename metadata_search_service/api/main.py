@@ -63,7 +63,7 @@ async def search(
             status_code=400,
             detail="'limit' parameter must be greater than or equal to 1",
         )
-    hits, facets = await perform_search(
+    hits, facets, count = await perform_search(
         document_type=document_type,
         search_query=query.query,
         filters=query.filters,
@@ -72,5 +72,5 @@ async def search(
         limit=limit,
         config=config,
     )
-    response = {"facets": facets, "hits": hits}
+    response = {"facets": facets, "count": count, "hits": hits}
     return response

@@ -62,6 +62,7 @@ def test_index():
                         "Whole genome bisufite sequencing for smoking and non-smoking mother-child pairs",
                     ]
                 },
+                "count": 5,
                 "facets": {},
             },
         ),
@@ -78,6 +79,7 @@ def test_index():
                         "Whole genome bisufite sequencing for smoking and non-smoking mother-child pairs",
                     ]
                 },
+                "count": 5,
                 "facets": {
                     "type": {
                         "sample": 1,
@@ -100,6 +102,7 @@ def test_index():
                         "DATA_SET_Coverage_bias_sensitivity_of_variant_calling_for_4_WG_seq_tech"
                     ]
                 },
+                "count": 5,
                 "facets": {
                     "type": {
                         "sample": 1,
@@ -123,6 +126,7 @@ def test_index():
                         "Epigenomic alterations define lethal CIMP-positive ependymomas of infancy",
                     ]
                 },
+                "count": 5,
                 "facets": {
                     "type": {"Other": 3, "Whole Genome Sequencing": 1, "Epigenetics": 1}
                 },
@@ -141,6 +145,7 @@ def test_index():
                         "Schwannomatosis WES data",
                     ]
                 },
+                "count": 2,
                 "facets": {"type": {"Exome sequencing": 2}},
             },
         ),
@@ -158,6 +163,7 @@ def test_index():
             10,
             {
                 "data": {"title": ["Schwannomatosis WES data"]},
+                "count": 1,
                 "facets": {"type": {"Exome sequencing": 1}},
             },
         ),
@@ -173,13 +179,14 @@ def test_index():
                         "Exome sequencing of serially transplanted genetically marked IC-enriched primary PDAC cultures.",
                     ]
                 },
+                "count": 1,
                 "facets": {"type": {"Exome sequencing": 1}},
             },
         ),
     ],
 )
 @pytest.mark.asyncio
-async def test_search(
+async def test_search(  # noqa: C901
     initialize_test_db,  # noqa: F811
     query,
     document_type,
@@ -205,6 +212,9 @@ async def test_search(
                 if i >= len(conditions["data"][key]):
                     break
                 assert doc[key] == conditions["data"][key][i]
+
+    if conditions["count"]:
+        assert data["count"] == conditions["count"]
 
     if return_facets:
         assert len(data["facets"]) > 0

@@ -18,7 +18,7 @@
 from enum import Enum
 from typing import Dict, List, Optional
 
-from pydantic import BaseModel
+from pydantic import BaseModel, Field
 
 
 class DocumentType(str, Enum):
@@ -40,8 +40,11 @@ class FacetOption(BaseModel):
     Represent values and their corresponding count for a facet.
     """
 
-    option: str
-    count: Optional[int] = None
+    option: str = Field(description="One of the values for the facet")
+    count: Optional[int] = Field(
+        None,
+        description="The count that represents number of documents that has this facet value",
+    )
 
 
 class Facet(BaseModel):
@@ -49,8 +52,10 @@ class Facet(BaseModel):
     Represents a facet and the possible values for that facet.
     """
 
-    key: str
-    options: List[FacetOption]
+    key: str = Field(description="The facet key")
+    options: List[FacetOption] = Field(
+        description="One or more values and their counts"
+    )
 
 
 class FilterOption(BaseModel):
@@ -58,8 +63,8 @@ class FilterOption(BaseModel):
     Represents a Filter option.
     """
 
-    key: str
-    value: str
+    key: str = Field(description="The filter key")
+    value: str = Field(description="The filter value")
 
 
 class SearchQuery(BaseModel):
@@ -67,8 +72,10 @@ class SearchQuery(BaseModel):
     Represents the Search Query.
     """
 
-    query: str
-    filters: Optional[List[FilterOption]] = None
+    query: str = Field(description="The query string to use for search")
+    filters: Optional[List[FilterOption]] = Field(
+        None, description="One or more filters to apply when performing a search"
+    )
 
 
 class SearchHit(BaseModel):
@@ -76,10 +83,14 @@ class SearchHit(BaseModel):
     Represents the Search Hit.
     """
 
-    document_type: DocumentType
-    id: str
-    context: Optional[str] = None
-    content: Optional[Dict] = None
+    document_type: DocumentType = Field(description="The type of document")
+    id: str = Field(description="The unique identifier of the document")
+    context: Optional[str] = Field(
+        None, description="The context where this search hit was found"
+    )
+    content: Optional[Dict] = Field(
+        None, description="The full document of the search hit"
+    )
 
 
 class SearchResult(BaseModel):
@@ -87,5 +98,8 @@ class SearchResult(BaseModel):
     Represents the Search Result.
     """
 
-    facets: List[Facet]
-    hits: List[SearchHit]
+    facets: List[Facet] = Field(
+        description="One or more facets that summarizes the hits"
+    )
+    count: int = Field(description="Number of hits")
+    hits: List[SearchHit] = Field(description="One or more search hits")

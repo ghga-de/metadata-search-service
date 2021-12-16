@@ -32,7 +32,7 @@ async def perform_search(
     skip: int = 0,
     limit: int = 10,
     config: Config = CONFIG,
-) -> Tuple[List[Dict], List[Dict]]:
+) -> Tuple[List[Dict], List[Dict], int]:
     """
     Perform a search on the metadata store and get all
     documents that match a given search query.
@@ -46,10 +46,11 @@ async def perform_search(
         config: The config
 
     Returns:
-        A list of documents with facets and a list of facets, if ``return_facets=True``
+        A list of documents, a list of facets (if ``return_facets=True``),
+        and a count representing total number of hits
 
     """
-    docs, facet_results = await get_documents(
+    docs, facet_results, count = await get_documents(
         collection_name=document_type,
         search_query=search_query,
         filters=filters,
@@ -78,4 +79,4 @@ async def perform_search(
                     }
                     facet["options"].append(facet_option)
                 facets.append(facet)
-    return hits, facets
+    return hits, facets, count
