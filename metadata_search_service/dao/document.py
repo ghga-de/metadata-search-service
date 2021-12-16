@@ -18,12 +18,9 @@ import logging
 from typing import Dict, List, Tuple
 
 from metadata_search_service.config import CONFIG, Config
-from metadata_search_service.core.utils import (
-    DEFAULT_FACET_FIELDS,
-    MAX_LIMIT,
-    build_aggregation_query,
-)
+from metadata_search_service.core.utils import DEFAULT_FACET_FIELDS
 from metadata_search_service.dao.db import get_db_client
+from metadata_search_service.dao.utils import MAX_LIMIT, build_aggregation_query
 
 # pylint: disable=too-many-locals, too-many-nested-blocks, too-many-arguments
 
