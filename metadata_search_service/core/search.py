@@ -34,7 +34,8 @@ async def perform_search(
     config: Config = CONFIG,
 ) -> Tuple[List[Dict], List[Dict]]:
     """
-    Get documents for a given document type.
+    Perform a search on the metadata store and get all
+    documents that match a given search query.
 
     Args:
         document_type: The type of document
