@@ -35,9 +35,12 @@ async def initialize_test_db():
     ]
     db_client = AsyncIOMotorClient("mongodb://localhost:27017")
     for filename, collection_name in json_files:
-        full_filename = open(os.path.join(curr_dir, "..", "test_data", filename))
+        full_filename = open(os.path.join(curr_dir, "data", filename))
         objects = json.load(full_filename)
         await db_client["metadata-store-test"][collection_name].delete_many({})
         await db_client["metadata-store-test"][collection_name].insert_many(
             objects[filename.split(".")[0]]
+        )
+        await db_client["metadata-store-test"][collection_name].create_index(
+            [("$**", "text")]
         )

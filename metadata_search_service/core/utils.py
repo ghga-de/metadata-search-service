@@ -21,8 +21,8 @@ DEFAULT_FACET_FIELDS: Dict[str, Set[Any]] = {
     "Dataset": {"type", "has_study.type"},
     "Project": set(),
     "Study": {"type"},
-    "Experiment": set(),
-    "Sample": {"has_individual.id"},
+    "Experiment": {"type"},
+    "Sample": {"tissue"},
     "Publication": set(),
     "File": {"type"},
 }
@@ -30,7 +30,7 @@ DEFAULT_FACET_FIELDS: Dict[str, Set[Any]] = {
 
 def get_time_in_millis() -> int:
     """
-    Get current time in milliseconds
+    Get current time in milliseconds.
 
     Returns:
         Time in milliseconds

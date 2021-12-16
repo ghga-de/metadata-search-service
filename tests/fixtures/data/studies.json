@@ -10,15 +10,16 @@
           "value": "DKFZ-IBIOS"
         },
         {
-          "key": "released",
-          "value": "RELEASED"
-        },
-        {
           "key": "published",
           "value": true
+        },
+        {
+          "key": "released",
+          "value": "RELEASED"
         }
       ],
-      "id": "595c6fe1-1908-4596-b72a-ac89b7960375",
+      "has_project": "23b614aa-8eee-4d09-b3db-30f7524ebf57",
+      "id": "6c41f0c2-8145-468a-8d79-63ef900d0e2b",
       "title": "Coverage bias and sensitivity of variant calling for four whole-genome sequencing technologies",
       "type": "Whole Genome Sequencing",
       "xref": [
@@ -35,15 +36,16 @@
           "value": "DKFZ-IBIOS"
         },
         {
-          "key": "released",
-          "value": "RELEASED"
-        },
-        {
           "key": "published",
           "value": true
+        },
+        {
+          "key": "released",
+          "value": "RELEASED"
         }
       ],
-      "id": "6a9d2211-a94e-4486-be29-7fc4e0d46bcb",
+      "has_project": "e5664b5b-7c5e-4ade-ae06-8c028a3bbb9f",
+      "id": "c5460116-53fb-4d18-9914-7970fa08e874",
       "title": "Epigenomic alterations define lethal CIMP-positive ependymomas of infancy",
       "type": "Other",
       "xref": [
@@ -56,27 +58,84 @@
       "description": "Whole-blood samples of 16 mother-child pairs with differing maternal smoking behaviour were bisulfite treated and sequenced with deep coverage to identify smoking-associated differentially methylated regions.RNA-sequencing and ChIP-sequencing of 4 chromatin marks complete the data set and allow for integrative analyses, functional region annotation and to study the impact of epigenetic changes on gene expression.Longitudinal data spanning several years provides the means to investigate the stability of observed differences of all data types.",
       "has_attribute": [
         {
-          "key": "centerName",
-          "value": "DKFZ-IBIOS"
+          "key": "releasedDate",
+          "value": "2016-04-19T22:00.000Z"
         },
         {
-          "key": "released",
-          "value": "RELEASED"
+          "key": "centerName",
+          "value": "DKFZ-IBIOS"
         },
         {
           "key": "published",
           "value": true
         },
         {
-          "key": "releasedDate",
-          "value": "2016-04-19T22:00.000Z"
+          "key": "released",
+          "value": "RELEASED"
         }
       ],
-      "id": "5e427a5c-a7a0-4eee-ba16-eab1bc598998",
+      "has_project": "6a920e05-4714-4644-abcd-ae8c3697717a",
+      "id": "2ec70382-b309-448a-be8d-2ad9ae1f5cc2",
       "title": "Whole genome bisufite sequencing of smoking and non-smoking mother-child pairsBisufite sequencing, RNA-seq and ChIP-Seq data of whole blood samples from smoking and non-smoking mothers and their children at gestation/birth and follow-up years.",
       "type": "Epigenetics",
       "xref": [
         "marlboro-EEP-2013-03-15"
+      ]
+    },
+    {
+      "accession": "EGAS00001000698",
+      "creation_date": "2014-02-06T21:11.000Z",
+      "description": "This study contains omics datasets from the Neuromics project (www.rd-neuromics.eu) on rare neuromuscular and neurodegenerative disorders.   Data includes BAM and VCF files from whole-exome sequencing and standardised phenotypic data mapped to the human phenotype ontology (HPO). In some cases proteomic, transcriptomic and metabolomic data may also be available.  This study groups together datasets from individuals with a Huntington's disease phenotype and also includes some unaffected family members. Search under the Neuromics name to find related studies for other neuromuscular and neurodegenerative disorders.",
+      "has_attribute": [
+        {
+          "key": "releasedDate",
+          "value": "2019-09-04T22:00.000Z"
+        },
+        {
+          "key": "centerName",
+          "value": "Neuromics"
+        },
+        {
+          "key": "published",
+          "value": true
+        },
+        {
+          "key": "released",
+          "value": "RELEASED"
+        }
+      ],
+      "has_project": "99cfc7cd-8225-40a2-98be-ce369eef2aaf",
+      "id": "6e5cc3c8-62f6-4c5c-b4ad-70393cf871ee",
+      "title": "Neuromics / RD-Connect - Huntington's disease",
+      "type": "Other",
+      "xref": [
+        "ena-STUDY-NEUROMICS-06-02-2014-22:55:01:287-32"
+      ]
+    },
+    {
+      "accession": "EGAS00001000767",
+      "creation_date": "2014-04-11T09:28.000Z",
+      "description": "Schwannomatosis (MIM #162091) is characterized by the development of multiple schwannomas without vestibular nerve involvement (which is a characteristic of neurofibromatosis type 2 - NF2). In an effort to detect novel genetic alterations predisposing to schwannomatosis, we sequenced eight tumor-blood DNA pairs from de novo schwannomatosis patients. The results of our study are present in the paper \"Whole exome sequencing reveals that the majority of schwannomatosis cases remain unexplained after excluding SMARCB1 and LZTR1 germline variants\" published in Acta Neuropathologica (PMID:25008767)",
+      "has_attribute": [
+        {
+          "key": "centerName",
+          "value": "DKFZ-IBIOS"
+        },
+        {
+          "key": "published",
+          "value": true
+        },
+        {
+          "key": "released",
+          "value": "RELEASED"
+        }
+      ],
+      "has_project": "3973323e-3a78-48a5-947b-1f95563cac52",
+      "id": "619ba0a7-1baf-4abb-b171-90b37e4734bd",
+      "title": "Next generation sequencing of sporadic schwannomatosis samples",
+      "type": "Other",
+      "xref": [
+        "ena-STUDY-DKFZ-IBIOS-11-04-2014-11:44:21:184-48"
       ]
     }
   ]

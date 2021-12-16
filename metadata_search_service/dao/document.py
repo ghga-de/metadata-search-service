@@ -15,82 +15,64 @@
 """DAO for retrieving a document from the metadata store"""
 
 import logging
-from typing import Any, Dict, List, Set, Tuple
-
-import stringcase
-from pymongo import ASCENDING
+from typing import Dict, List, Set, Tuple
 
 from metadata_search_service.config import CONFIG, Config
-from metadata_search_service.core.utils import DEFAULT_FACET_FIELDS
 from metadata_search_service.dao.db import get_db_client
+from metadata_search_service.dao.utils import build_aggregation_query
 
-# pylint: disable=too-many-locals, too-many-nested-blocks, too-many-branches
-
-MAX_LIMIT = 100
+# pylint: disable=too-many-locals, too-many-nested-blocks, too-many-arguments
 
 
 async def get_documents(
-    document_type: str,
-    return_facets: bool = False,
+    collection_name: str,
+    search_query: str = "*",
+    filters: List = None,
+    facet_fields: Set = None,
     skip: int = 0,
     limit: int = 10,
     config: Config = CONFIG,
-) -> Tuple[List, List]:
-    """
-    Get documents for a given document type.
-
-    Args:
-        document_type: The type of document
-        return_facets: Whether or not to facet. Defaults to False
-        skip: The number of documents to skip
-        limit: The total number of documents to retrieve
-
-    Returns:
-        A list of documents with facets and a list of facets, if ``return_facets=True``
-
-    """
-    docs = await _get_documents(
-        document_type, skip=skip, limit=min(limit, MAX_LIMIT), config=config
-    )
-    hits = [{"document_type": document_type, "id": x["id"], "content": x} for x in docs]
-    facets = []
-    if return_facets:
-        facet_stats = await generate_facets(
-            docs, facet_fields=DEFAULT_FACET_FIELDS[document_type]
-        )
-        for key in facet_stats.keys():
-            formatted_facet = {"key": key, "options": []}
-            for stat_key, stat_value in facet_stats[key].items():
-                formatted_facet["options"].append(
-                    {"option": stat_key, "count": stat_value}
-                )
-            facets.append(formatted_facet)
-    return hits, facets
-
-
-async def _get_documents(
-    collection_name: str, skip: int = 0, limit: int = 10, config: Config = CONFIG
-):
+) -> Tuple[List[Dict], List[Dict]]:
     """
     Get documents from a given ``collection_name``.
 
     Args:
         collection_name: The name of the collection from which to fetch the documents
+        search_query: The search query string to use for text serach
         skip: The number of documents to skip
+        facet_fields: A set of fields to facet on
         limit: The total number of documents to retrieve
+        config: The config
 
     Returns:
-        A list of documents from the collection
+        A list of documents from the collection and a list of facets
 
     """
     client = await get_db_client(config)
     collection = client[config.db_name][collection_name]
-    cursor = collection.find().sort("id", ASCENDING).skip(skip).limit(limit)  # type: ignore
-    docs = await cursor.to_list(None)
-    for doc in docs:
-        del doc["_id"]
-    client.close()
-    return docs
+    if facet_fields:
+        query = build_aggregation_query(
+            search_query=search_query,
+            filters=filters,
+            facet_fields=facet_fields,
+            skip=skip,
+            limit=limit,
+        )
+    else:
+        query = build_aggregation_query(
+            search_query=search_query, filters=filters, skip=skip, limit=limit
+        )
+
+    [results] = await collection.aggregate(query).to_list(None)
+    docs = results["data"]
+
+    facets = []
+    if facet_fields:
+        for key in results.keys():
+            if key not in {"data", "metadata"}:
+                facet = {key: results[key]}
+                facets.append(facet)
+    return docs, facets
 
 
 async def _get_reference(
@@ -119,119 +101,3 @@ async def _get_reference(
             collection_name,
         )
     return doc
-
-
-async def generate_stats(
-    documents: List, fields: Set, prefix: str = None
-) -> Dict[str, Dict]:
-    """
-    Given a set of fields, count occurrence of values for each field
-    in a given set of documents.
-
-    Args:
-        documents: A list of documents
-        fields: A set of fields
-        prefix (str, optional): Prefix for the stat key. Defaults to None
-
-    Returns:
-        A stats dictionary
-    """
-    stats: Dict[str, Dict] = {}
-    for field in fields:
-        # for each field create a stats dictionary
-        if prefix:
-            key = f"{prefix}.{field}"
-        else:
-            key = field
-        stats[key] = {}
-        for document in documents:
-            # check if field exists in each document
-            # and if it does, count the occurrence of the value
-            # and store in stats dictionary
-            if field in document:
-                value = document[field]
-                if isinstance(value, str):
-                    # value is of type str
-                    if value not in stats[key]:
-                        stats[key][value] = 1
-                    else:
-                        stats[key][value] += 1
-                elif isinstance(value, (list, tuple, set)):
-                    # value is of type list, tuple, or set. i.e. multivalued
-                    for item in value:
-                        if item not in stats[key]:
-                            stats[key][item] = 1
-                        else:
-                            stats[key][item] += 1
-    return stats
-
-
-async def generate_facets(  # noqa: C901
-    documents: List[Dict], facet_fields: Set, prefix: str = None
-) -> Dict:
-    """
-    Given a set of documents and a list of fields, generate the
-    appropriate facets.
-
-    Args:
-        documents: A list of documents
-        facet_fields: Fields to facet on
-        prefix: Prefix for the facet key. Defaults to None
-
-    Returns:
-        A dictionary that represents facets generated on the given set of documents
-
-    """
-    top_level_fields = set()
-    nested_fields = set()
-    for field in facet_fields:
-        if "." not in field:
-            # top level fields type
-            top_level_fields.add(field)
-        else:
-            # nested fields like dataset.has_experiment.type
-            nested_fields.add(field)
-
-    stats: Dict[str, Dict] = await generate_stats(documents, top_level_fields, prefix)
-
-    if nested_fields:
-        # process the next level of the document
-        field_to_nested_fields: Dict[str, Set] = {}
-        for nested_field_item in nested_fields:
-            field, nested_field = nested_field_item.split(".", 1)
-            if field in field_to_nested_fields:
-                field_to_nested_fields[field].add(nested_field)
-            else:
-                field_to_nested_fields[field] = {nested_field}
-        for field, nested_fields in field_to_nested_fields.items():
-            nested_documents = []
-            for document in documents:
-                if field in document.keys():
-                    nested_document: Any = document[field]
-                    if isinstance(nested_document, dict):
-                        nested_documents.append(nested_document)
-                    elif isinstance(nested_document, (list, tuple, set)):
-                        # one to many
-                        if isinstance(nested_document[0], str):  # type: ignore
-                            # one to many references
-                            for doc_id in nested_document:
-                                embedded_document = await _get_reference(
-                                    doc_id,
-                                    stringcase.pascalcase(field.split("_", 1)[1]),
-                                )
-                                nested_documents.append(embedded_document)
-                        elif isinstance(nested_document[0], (list, tuple, set)):  # type: ignore
-                            # one to many objects
-                            nested_documents.extend(nested_document)
-                    elif isinstance(nested_document, str):
-                        # reference to another doc
-                        embedded_document = await _get_reference(
-                            nested_document,
-                            stringcase.pascalcase(field.split("_", 1)[1]),
-                        )
-                        nested_documents.append(embedded_document)
-            nested_stats = await generate_facets(
-                nested_documents, nested_fields, prefix=field
-            )
-            stats.update(nested_stats)
-    return stats
