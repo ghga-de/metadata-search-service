@@ -15,77 +15,20 @@
 """DAO for retrieving a document from the metadata store"""
 
 import logging
-from typing import Dict, List, Tuple
+from typing import Dict, List, Set, Tuple
 
 from metadata_search_service.config import CONFIG, Config
-from metadata_search_service.core.utils import DEFAULT_FACET_FIELDS
 from metadata_search_service.dao.db import get_db_client
-from metadata_search_service.dao.utils import MAX_LIMIT, build_aggregation_query
+from metadata_search_service.dao.utils import build_aggregation_query
 
 # pylint: disable=too-many-locals, too-many-nested-blocks, too-many-arguments
 
 
 async def get_documents(
-    document_type: str,
-    search_query: str = "*",
-    filters: List = None,
-    return_facets: bool = False,
-    skip: int = 0,
-    limit: int = 10,
-    config: Config = CONFIG,
-) -> Tuple[List[Dict], List[Dict]]:
-    """
-    Get documents for a given document type.
-
-    Args:
-        document_type: The type of document
-        search_query: The search query string to use for text serach
-        return_facets: Whether or not to facet. Defaults to False
-        skip: The number of documents to skip
-        limit: The total number of documents to retrieve
-        config: The config
-
-    Returns:
-        A list of documents with facets and a list of facets, if ``return_facets=True``
-
-    """
-    docs, facet_results = await _get_documents(
-        document_type,
-        search_query=search_query,
-        filters=filters,
-        return_facets=return_facets,
-        skip=skip,
-        limit=min(limit, MAX_LIMIT),
-        config=config,
-    )
-    hits = [{"document_type": document_type, "id": x["id"], "content": x} for x in docs]
-    facets = []
-    if return_facets and facet_results:
-        for facet_result in facet_results:
-            for key, value in facet_result.items():
-                facet = {"key": key.replace("__", "."), "options": []}
-                for val in value:
-                    if val["_id"]:
-                        if isinstance(val["_id"], str):
-                            facet_key = val["_id"]
-                        else:
-                            facet_key = val["_id"][0]
-                    else:
-                        facet_key = str(val["_id"])
-                    facet_option = {
-                        "option": facet_key,
-                        "count": val["count"],
-                    }
-                    facet["options"].append(facet_option)
-                facets.append(facet)
-    return hits, facets
-
-
-async def _get_documents(
     collection_name: str,
     search_query: str = "*",
     filters: List = None,
-    return_facets: bool = False,
+    facet_fields: Set = None,
     skip: int = 0,
     limit: int = 10,
     config: Config = CONFIG,
@@ -97,7 +40,7 @@ async def _get_documents(
         collection_name: The name of the collection from which to fetch the documents
         search_query: The search query string to use for text serach
         skip: The number of documents to skip
-        return_facets: Whether or not to facet. Defaults to False
+        facet_fields: A set of fields to facet on
         limit: The total number of documents to retrieve
         config: The config
 
@@ -107,8 +50,7 @@ async def _get_documents(
     """
     client = await get_db_client(config)
     collection = client[config.db_name][collection_name]
-    if return_facets:
-        facet_fields = DEFAULT_FACET_FIELDS[collection_name]
+    if facet_fields:
         query = build_aggregation_query(
             search_query=search_query,
             filters=filters,
@@ -125,7 +67,7 @@ async def _get_documents(
     docs = results["data"]
 
     facets = []
-    if return_facets:
+    if facet_fields:
         for key in results.keys():
             if key not in {"data", "metadata"}:
                 facet = {key: results[key]}

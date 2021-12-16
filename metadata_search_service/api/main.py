@@ -24,7 +24,7 @@ from ghga_service_chassis_lib.api import configure_app
 
 from metadata_search_service.api.deps import get_config
 from metadata_search_service.config import CONFIG, Config
-from metadata_search_service.dao.document import get_documents
+from metadata_search_service.core.search import perform_search
 from metadata_search_service.models import DocumentType, SearchQuery, SearchResult
 
 # pylint: disable=too-many-arguments
@@ -63,9 +63,9 @@ async def search(
             status_code=400,
             detail="'limit' parameter must be greater than or equal to 1",
         )
-    hits, facets = await get_documents(
-        search_query=query.query,
+    hits, facets = await perform_search(
         document_type=document_type,
+        search_query=query.query,
         filters=query.filters,
         return_facets=return_facets,
         skip=skip,
