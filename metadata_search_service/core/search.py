@@ -19,7 +19,6 @@ from typing import Dict, List, Tuple
 from metadata_search_service.config import CONFIG, Config
 from metadata_search_service.core.utils import DEFAULT_FACET_FIELDS
 from metadata_search_service.dao.document import get_documents
-from metadata_search_service.dao.utils import MAX_LIMIT
 
 # pylint: disable=too-many-locals, too-many-nested-blocks, too-many-arguments
 
@@ -56,7 +55,7 @@ async def perform_search(
         filters=filters,
         facet_fields=DEFAULT_FACET_FIELDS[document_type],
         skip=skip,
-        limit=min(limit, MAX_LIMIT),
+        limit=limit,
         config=config,
     )
     hits = [{"document_type": document_type, "id": x["id"], "content": x} for x in docs]

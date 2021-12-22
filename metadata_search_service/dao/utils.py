@@ -18,8 +18,6 @@ from typing import Dict, List, Optional, Set
 
 import stringcase
 
-MAX_LIMIT = 100
-
 NON_NESTED_FIELDS: Set = {"has_attribute"}
 
 
@@ -237,9 +235,13 @@ def build_aggregation_query(
         # Faceting
         facet_query = build_facet_query(facet_fields=facet_fields)
 
-    # Pagination
+    # Pagination (if limit = 0, use no pagination)
     facet_query["metadata"] = [{"$count": "total"}]
-    facet_query["data"] = [{"$skip": skip}, {"$limit": min(limit, MAX_LIMIT)}]
+
+    if limit != 0:
+        facet_query["data"] = [{"$skip": skip}, {"$limit": limit}]
+    else:
+        facet_query["data"] = [{"$sort": {"_id": 1}}]
 
     facet_pipeline = {"$facet": facet_query}
     pipelines.append(facet_pipeline)
