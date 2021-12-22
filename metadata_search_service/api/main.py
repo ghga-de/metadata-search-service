@@ -58,11 +58,12 @@ async def search(
             status_code=400,
             detail="'skip' parameter must be greater than or equal to 0",
         )
-    if limit < 1:
+    if limit < 0:
         raise HTTPException(
             status_code=400,
-            detail="'limit' parameter must be greater than or equal to 1",
+            detail="'limit' parameter must be greater than or equal to 0",
         )
+
     hits, facets, count = await perform_search(
         document_type=document_type,
         search_query=query.query,
