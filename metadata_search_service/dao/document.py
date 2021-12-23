@@ -72,7 +72,9 @@ async def get_documents(
     if facet_fields:
         for key in results.keys():
             if key not in {"data", "metadata"}:
-                facet = {key: results[key]}
+                facet = {
+                    key: sorted(results[key], key=lambda x: x["count"], reverse=True)
+                }
                 facets.append(facet)
     return docs, facets, count
 
