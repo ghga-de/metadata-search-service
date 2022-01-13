@@ -226,10 +226,6 @@ def build_aggregation_query(
         match_pipeline = {"$match": match_query}
         pipelines.append(match_pipeline)
 
-    # Sort
-    sort_pipeline = {"$sort": {"_id": 1}}
-    pipelines.append(sort_pipeline)
-
     facet_query = {}
     if facet_fields:
         # Faceting
@@ -239,8 +235,14 @@ def build_aggregation_query(
     facet_query["metadata"] = [{"$count": "total"}]
 
     if limit != 0:
-        facet_query["data"] = [{"$skip": skip}, {"$limit": limit}]
+        # Sort by _id, apply skip and limit
+        facet_query["data"] = [
+            {"$sort": {"_id": 1}},
+            {"$skip": skip},
+            {"$limit": limit},
+        ]
     else:
+        # Sort by _id
         facet_query["data"] = [{"$sort": {"_id": 1}}]
 
     facet_pipeline = {"$facet": facet_query}
