@@ -1,4 +1,4 @@
-# Copyright 2021 Universität Tübingen, DKFZ and EMBL
+# Copyright 2021 - 2022 Universität Tübingen, DKFZ and EMBL
 # for the German Human Genome-Phenome Archive (GHGA)
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -22,9 +22,11 @@ DEFAULT_FACET_FIELDS: Dict[str, Set[Any]] = {
     "Project": set(),
     "Study": {"type"},
     "Experiment": {"type"},
-    "Sample": {"tissue"},
+    "Biospecimen": {"has_phenotypic_feature.name"},
+    "Sample": set(),
     "Publication": set(),
-    "File": {"type"},
+    "File": {"format"},
+    "Individual": {"gender", "has_phenotypic_feature.name"},
 }
 
 
