@@ -1,0 +1,133 @@
+{
+  "title": "ModSettings",
+  "description": "Modifies the orginal Settings class provided by the user",
+  "type": "object",
+  "properties": {
+    "host": {
+      "title": "Host",
+      "default": "127.0.0.1",
+      "env_names": [
+        "metadata_search_service_host"
+      ],
+      "type": "string"
+    },
+    "port": {
+      "title": "Port",
+      "default": 8080,
+      "env_names": [
+        "metadata_search_service_port"
+      ],
+      "type": "integer"
+    },
+    "log_level": {
+      "title": "Log Level",
+      "default": "info",
+      "env_names": [
+        "metadata_search_service_log_level"
+      ],
+      "enum": [
+        "critical",
+        "error",
+        "warning",
+        "info",
+        "debug",
+        "trace"
+      ],
+      "type": "string"
+    },
+    "auto_reload": {
+      "title": "Auto Reload",
+      "default": false,
+      "env_names": [
+        "metadata_search_service_auto_reload"
+      ],
+      "type": "boolean"
+    },
+    "workers": {
+      "title": "Workers",
+      "default": 1,
+      "env_names": [
+        "metadata_search_service_workers"
+      ],
+      "type": "integer"
+    },
+    "api_root_path": {
+      "title": "Api Root Path",
+      "default": "/",
+      "env_names": [
+        "metadata_search_service_api_root_path"
+      ],
+      "type": "string"
+    },
+    "openapi_url": {
+      "title": "Openapi Url",
+      "default": "/openapi.json",
+      "env_names": [
+        "metadata_search_service_openapi_url"
+      ],
+      "type": "string"
+    },
+    "docs_url": {
+      "title": "Docs Url",
+      "default": "/docs",
+      "env_names": [
+        "metadata_search_service_docs_url"
+      ],
+      "type": "string"
+    },
+    "cors_allowed_origins": {
+      "title": "Cors Allowed Origins",
+      "env_names": [
+        "metadata_search_service_cors_allowed_origins"
+      ],
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "cors_allow_credentials": {
+      "title": "Cors Allow Credentials",
+      "env_names": [
+        "metadata_search_service_cors_allow_credentials"
+      ],
+      "type": "boolean"
+    },
+    "cors_allowed_methods": {
+      "title": "Cors Allowed Methods",
+      "env_names": [
+        "metadata_search_service_cors_allowed_methods"
+      ],
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "cors_allowed_headers": {
+      "title": "Cors Allowed Headers",
+      "env_names": [
+        "metadata_search_service_cors_allowed_headers"
+      ],
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "db_url": {
+      "title": "Db Url",
+      "default": "mongodb://localhost:27017",
+      "env_names": [
+        "metadata_search_service_db_url"
+      ],
+      "type": "string"
+    },
+    "db_name": {
+      "title": "Db Name",
+      "default": "metadata-store",
+      "env_names": [
+        "metadata_search_service_db_name"
+      ],
+      "type": "string"
+    }
+  },
+  "additionalProperties": false
+}
