@@ -77,6 +77,7 @@ jobs:
             -u '${{ secrets.DEPLOYMENT_UPDATE_TOKEN }}' \
             --data '{
               "event_type": "new_app_version",
+              "ref": "${{ needs.get_commit_version.outputs.branch }}",
               "client_payload": {
                 "app_name": "${{ github.event.repository.name }}",
                 "context": "${{ needs.get_commit_version.outputs.branch }}",
