@@ -20,23 +20,14 @@ import pytest
 from fastapi import status
 from fastapi.testclient import TestClient
 
-from metadata_search_service.api.deps import get_config
 from metadata_search_service.api.main import app
-from metadata_search_service.config import Config
-from tests.fixtures import initialize_test_db  # noqa: F401,F811
+
+from ..fixtures.mongodb import MongoAppFixture, mongo_app_fixture  # noqa: F401
 
 nest_asyncio.apply()
 
 
-def get_config_override():
-    return Config(db_url="mongodb://localhost:27017", db_name="metadata-store-test")
-
-
-app.dependency_overrides[get_config] = get_config_override
-client = TestClient(app)
-
-
-def test_index():
+def test_index(mongo_app_fixture: MongoAppFixture):  # noqa: F811
     """Test the index endpoint"""
 
     client = TestClient(app)
@@ -187,7 +178,7 @@ def test_index():
 )
 @pytest.mark.asyncio
 async def test_search(  # noqa: C901
-    initialize_test_db,  # noqa: F811
+    mongo_app_fixture: MongoAppFixture,  # noqa: F811
     query,
     document_type,
     return_facets,
@@ -195,6 +186,8 @@ async def test_search(  # noqa: C901
     limit,
     conditions,
 ):
+    """Test search"""
+    client = mongo_app_fixture.app_client
     url = f"/rpc/search?document_type={document_type}&return_facets={return_facets}&skip={skip}&limit={limit}"
     response = client.post(
         url,
