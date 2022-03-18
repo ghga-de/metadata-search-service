@@ -38,19 +38,23 @@ def get_time_in_millis() -> int:
     return int(round(time.time() * 1000))
 
 
-def format_facet_key(top_level_document_type: str, key: str):
+def format_facet_key(
+    key: str, top_level_document_type: str = None, separator: str = " "
+):
     """
     Format a facet key for better readability.
 
     Args:
-        top_level_document_type: The top level document type
         key: The facet key
+        top_level_document_type: The top level document type
+        separator: The separator to use between field names
 
     Returns:
         The formatted facet key
     """
-    separator = " > "
-    formatted_fields = [top_level_document_type.title()]
+    formatted_fields = []
+    if top_level_document_type:
+        formatted_fields.append(top_level_document_type.title())
     fields = key.split(".")
     for field in fields:
         if field.startswith("has_"):

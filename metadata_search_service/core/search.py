@@ -65,7 +65,7 @@ async def perform_search(
             for key, value in facet_result.items():
                 facet = {
                     "key": key.replace("__", "."),
-                    "name": format_facet_key(document_type, key.replace("__", ".")),
+                    "name": format_facet_key(key.replace("__", ".")),
                     "options": [],
                 }
                 for val in value:
