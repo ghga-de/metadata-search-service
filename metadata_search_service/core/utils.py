@@ -36,3 +36,27 @@ def get_time_in_millis() -> int:
         Time in milliseconds
     """
     return int(round(time.time() * 1000))
+
+
+def format_facet_key(top_level_document_type: str, key: str):
+    """
+    Format a facet key for better readability.
+
+    Args:
+        top_level_document_type: The top level document type
+        key: The facet key
+
+    Returns:
+        The formatted facet key
+    """
+    separator = " > "
+    formatted_fields = [top_level_document_type.title()]
+    fields = key.split(".")
+    for field in fields:
+        if field.startswith("has_"):
+            # reference field
+            formatted_field = field.replace("has_", "")
+            formatted_fields.append(formatted_field.title())
+        else:
+            formatted_fields.append(field)
+    return separator.join(formatted_fields)
