@@ -1,10 +1,15 @@
-host: 127.0.0.1
-port: 8080
-log_level: info
-workers: 1
+api_root_path: /
 auto_reload: true
-db_url: mongodb://localhost:27017
+cors_allow_credentials: null
+cors_allowed_headers: null
+cors_allowed_methods: null
+cors_allowed_origins: null
 db_name: metadata-store
-api_root_path: "/"
-openapi_url: "/openapi.json"
-docs_url: "/docs"
+db_url: mongodb://localhost:27017
+docs_url: /docs
+host: 127.0.0.1
+log_level: info
+openapi_url: /openapi.json
+port: 8080
+workers: 1
+
