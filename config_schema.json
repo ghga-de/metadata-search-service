@@ -5,6 +5,7 @@
   "properties": {
     "host": {
       "title": "Host",
+      "description": "IP of the host.",
       "default": "127.0.0.1",
       "env_names": [
         "metadata_search_service_host"
@@ -13,6 +14,7 @@
     },
     "port": {
       "title": "Port",
+      "description": "Port to expose the server on the specified host",
       "default": 8080,
       "env_names": [
         "metadata_search_service_port"
@@ -21,6 +23,7 @@
     },
     "log_level": {
       "title": "Log Level",
+      "description": "Controls the verbosity of the log.",
       "default": "info",
       "env_names": [
         "metadata_search_service_log_level"
@@ -37,6 +40,7 @@
     },
     "auto_reload": {
       "title": "Auto Reload",
+      "description": "A development feature. Set to `True` to automatically reload the server upon code changes",
       "default": false,
       "env_names": [
         "metadata_search_service_auto_reload"
@@ -45,6 +49,7 @@
     },
     "workers": {
       "title": "Workers",
+      "description": "Number of workers processes to run.",
       "default": 1,
       "env_names": [
         "metadata_search_service_workers"
@@ -53,6 +58,7 @@
     },
     "api_root_path": {
       "title": "Api Root Path",
+      "description": "Root path at which the API is reachable. This is relative to the specified host and port.",
       "default": "/",
       "env_names": [
         "metadata_search_service_api_root_path"
@@ -61,6 +67,7 @@
     },
     "openapi_url": {
       "title": "Openapi Url",
+      "description": "Path to get the openapi specification in JSON format. This is relative to the specified host and port.",
       "default": "/openapi.json",
       "env_names": [
         "metadata_search_service_openapi_url"
@@ -69,6 +76,7 @@
     },
     "docs_url": {
       "title": "Docs Url",
+      "description": "Path to host the swagger documentation. This is relative to the specified host and port.",
       "default": "/docs",
       "env_names": [
         "metadata_search_service_docs_url"
@@ -77,6 +85,11 @@
     },
     "cors_allowed_origins": {
       "title": "Cors Allowed Origins",
+      "description": "A list of origins that should be permitted to make cross-origin requests. By default, cross-origin requests are not allowed. You can use ['*'] to allow any origin.",
+      "example": [
+        "https://example.org",
+        "https://www.example.org"
+      ],
       "env_names": [
         "metadata_search_service_cors_allowed_origins"
       ],
@@ -87,6 +100,11 @@
     },
     "cors_allow_credentials": {
       "title": "Cors Allow Credentials",
+      "description": "Indicate that cookies should be supported for cross-origin requests. Defaults to False. Also, cors_allowed_origins cannot be set to ['*'] for credentials to be allowed. The origins must be explicitly specified.",
+      "example": [
+        "https://example.org",
+        "https://www.example.org"
+      ],
       "env_names": [
         "metadata_search_service_cors_allow_credentials"
       ],
@@ -94,6 +112,10 @@
     },
     "cors_allowed_methods": {
       "title": "Cors Allowed Methods",
+      "description": "A list of HTTP methods that should be allowed for cross-origin requests. Defaults to ['GET']. You can use ['*'] to allow all standard methods.",
+      "example": [
+        "*"
+      ],
       "env_names": [
         "metadata_search_service_cors_allowed_methods"
       ],
@@ -104,6 +126,8 @@
     },
     "cors_allowed_headers": {
       "title": "Cors Allowed Headers",
+      "description": "A list of HTTP request headers that should be supported for cross-origin requests. Defaults to []. You can use ['*'] to allow all headers. The Accept, Accept-Language, Content-Language and Content-Type headers are always allowed for CORS requests.",
+      "example": [],
       "env_names": [
         "metadata_search_service_cors_allowed_headers"
       ],
