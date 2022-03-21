@@ -15,7 +15,6 @@
 
 """Test the api module"""
 
-import nest_asyncio
 import pytest
 from fastapi import status
 from fastapi.testclient import TestClient
@@ -23,8 +22,6 @@ from fastapi.testclient import TestClient
 from metadata_search_service.api.main import app
 
 from ..fixtures.mongodb import MongoAppFixture, mongo_app_fixture  # noqa: F401
-
-nest_asyncio.apply()
 
 
 def test_index(mongo_app_fixture: MongoAppFixture):  # noqa: F811
@@ -176,8 +173,7 @@ def test_index(mongo_app_fixture: MongoAppFixture):  # noqa: F811
         ),
     ],
 )
-@pytest.mark.asyncio
-async def test_search(  # noqa: C901
+def test_search(  # noqa: C901
     mongo_app_fixture: MongoAppFixture,  # noqa: F811
     query,
     document_type,
