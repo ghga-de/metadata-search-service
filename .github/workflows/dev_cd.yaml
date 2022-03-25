@@ -60,7 +60,7 @@ jobs:
           tags: "ghga/${{ github.event.repository.name }}:${{ needs.get_commit_version.outputs.version }},ghga/${{ github.event.repository.name }}:${{ needs.get_commit_version.outputs.branch }}"
       - name: Image digest
         run: echo ${{ steps.docker_build.outputs.digest }}
-    update_deployment_repo:
+  update_deployment_repo:
     runs-on: ubuntu-latest
     needs:
       - get_commit_version
@@ -76,7 +76,7 @@ jobs:
             -H 'Accept: application/vnd.github.everest-preview+json' \
             -u '${{ secrets.DEPLOYMENT_UPDATE_TOKEN }}' \
             --data '{
-              "event_type": "new_app_version",              
+              "event_type": "new_app_version",
               "client_payload": {
                 "app_name": "${{ github.event.repository.name }}",
                 "context": "${{ needs.get_commit_version.outputs.branch }}",
