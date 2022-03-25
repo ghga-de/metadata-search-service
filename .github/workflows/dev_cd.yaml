@@ -4,8 +4,7 @@ on:
   push:
     branches:
       - "dev"
-      # you may add other branches to
-      # activate deployment for them, too.
+      - "main"
 
 jobs:
   get_commit_version:
@@ -61,26 +60,26 @@ jobs:
           tags: "ghga/${{ github.event.repository.name }}:${{ needs.get_commit_version.outputs.version }},ghga/${{ github.event.repository.name }}:${{ needs.get_commit_version.outputs.branch }}"
       - name: Image digest
         run: echo ${{ steps.docker_build.outputs.digest }}
-  # update_deployment_repo:
-  #   runs-on: ubuntu-latest
-  #   needs:
-  #     - get_commit_version
-  #     - push_to_docker_hub
-  #   env:
-  #     DEPLOYMENT_CONFIG_REPO: ghga-de/sandbox-deployment-configs
-  #   steps:
-  #     - name: trigger update in deployment repo
-  #       run: |
-  #         # access token needs to be of format: <username>:<personal_access_token>
-  #         curl -X POST \
-  #           "https://api.github.com/repos/${DEPLOYMENT_CONFIG_REPO}/dispatches" \
-  #           -H 'Accept: application/vnd.github.everest-preview+json' \
-  #           -u '${{ secrets.DEPLOYMENT_UPDATE_TOKEN }}' \
-  #           --data '{
-  #             "event_type": "new_app_version",
-  #             "client_payload": {
-  #               "chart_name": "${{ github.event.repository.name }}",
-  #               "context": "${{ needs.get_commit_version.outputs.branch }}",
-  #               "new_app_version": "${{ needs.get_commit_version.outputs.version }}"
-  #             }
-  #           }'
+  update_deployment_repo:
+    runs-on: ubuntu-latest
+    needs:
+      - get_commit_version
+      - push_to_docker_hub
+    env:
+      DEPLOYMENT_CONFIG_REPO: ghga-de/helm
+    steps:
+      - name: trigger update in deployment repo
+        run: |
+          # access token needs to be of format: <username>:<personal_access_token>
+          curl -X POST \
+            "https://api.github.com/repos/${DEPLOYMENT_CONFIG_REPO}/dispatches" \
+            -H 'Accept: application/vnd.github.everest-preview+json' \
+            -u '${{ secrets.DEPLOYMENT_UPDATE_TOKEN }}' \
+            --data '{
+              "event_type": "new_app_version",
+              "client_payload": {
+                "app_name": "${{ github.event.repository.name }}",
+                "context": "${{ needs.get_commit_version.outputs.branch }}",
+                "new_image_tag": "${{ needs.get_commit_version.outputs.version }}"
+              }
+            }'
