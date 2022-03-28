@@ -17,7 +17,7 @@
 from typing import Dict, List, Tuple
 
 from metadata_search_service.config import CONFIG, Config
-from metadata_search_service.core.utils import DEFAULT_FACET_FIELDS
+from metadata_search_service.core.utils import DEFAULT_FACET_FIELDS, format_facet_key
 from metadata_search_service.dao.document import get_documents
 
 # pylint: disable=too-many-locals, too-many-nested-blocks, too-many-arguments
@@ -63,7 +63,11 @@ async def perform_search(
     if return_facets and facet_results:
         for facet_result in facet_results:
             for key, value in facet_result.items():
-                facet = {"key": key.replace("__", "."), "options": []}
+                facet = {
+                    "key": key.replace("__", "."),
+                    "name": format_facet_key(key.replace("__", ".")),
+                    "options": [],
+                }
                 for val in value:
                     if val["_id"]:
                         if isinstance(val["_id"], str):
