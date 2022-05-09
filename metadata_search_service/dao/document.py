@@ -111,7 +111,7 @@ async def _get_reference(
     """
     client = await get_db_client(config)
     collection = client[config.db_name][collection_name]
-    doc = await collection.find_one({"id": document_id})  # type: ignore
+    doc = await collection.find_one({"id": document_id})
     if doc:
         del doc["_id"]
     else:
