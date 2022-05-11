@@ -2,25 +2,13 @@
 // https://github.com/microsoft/vscode-dev-containers/tree/v0.177.0/containers/python-3-postgres
 // Update the VARIANT arg in docker-compose.yml to pick a Python version: 3, 3.8, 3.7, 3.6
 {
-	"name": "Python 3 & PostgreSQL",
+	"name": "MSS",
 	"dockerComposeFile": "docker-compose.yml",
-	"service": "app",
+	"service": "metadata_search_service",
 	"workspaceFolder": "/workspace",
 	// Set *default* container specific settings.json values on container create.
 	"settings": {
 		"terminal.integrated.shell.linux": "/bin/bash",
-		"sqltools.connections": [
-			{
-				"name": "Container database",
-				"driver": "PostgreSQL",
-				"previewLimit": 50,
-				"server": "localhost",
-				"port": 5432,
-				"database": "postgres",
-				"username": "postgres",
-				"password": "postgres"
-			}
-		],
 		"python.pythonPath": "/usr/local/bin/python",
 		"python.languageServer": "Pylance",
 		"python.linting.enabled": true,
@@ -36,8 +24,6 @@
 		"python.linting.pydocstylePath": "/usr/local/py-utils/bin/pydocstyle",
 		"python.linting.pylintPath": "/usr/local/py-utils/bin/pylint",
 		"python.testing.pytestPath": "/usr/local/py-utils/bin/pytest",
-		"python.testing.unittestEnabled": false,
-		"python.testing.pytestEnabled": true,
 		"editor.renderWhitespace": "all",
 		"editor.rulers": [
 			88
@@ -65,7 +51,7 @@
 		"EditorConfig.EditorConfig"
 	],
 	// Use 'forwardPorts' to make a list of ports inside the container available locally.
-	// "forwardPorts": [5000, 5432],
+	"forwardPorts": [27017],
 	// Use 'postCreateCommand' to run commands after the container is created.
 	"postCreateCommand": "dev_install",
 	// Comment out connect as root instead. More info: https://aka.ms/vscode-remote/containers/non-root.

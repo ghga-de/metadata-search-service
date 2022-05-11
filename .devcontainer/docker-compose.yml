@@ -1,7 +1,7 @@
 version: '3'
 
 services:
-  app:
+  metadata_search_service:
     build:
       context: .
       dockerfile: ./Dockerfile
@@ -12,7 +12,7 @@ services:
         INSTALL_NODE: "true"
         NODE_VERSION: "lts/*"
         # Please adapt to package name:
-        PACKAGE_NAME: "my_microservice"
+        PACKAGE_NAME: "metadata_search_service"
         # On Linux, you may need to update USER_UID and USER_GID below if not your local UID is not 1000.
         USER_UID: 1000
         USER_GID: 1000
@@ -27,31 +27,23 @@ services:
     command: sleep infinity
 
     # Runs app on the same network as the database container, allows "forwardPorts" in devcontainer.json function.
-    network_mode: service:postgresql
+    network_mode: service:mongodb
 
     # Uncomment the next line to use a non-root user for all processes.
     user: vscode
 
     # define environment variables
-    environment:
-      DB_URL: postgresql://postgres:postgres@postgresql/postgres
+    #environment:
 
     # Use "forwardPorts" in **devcontainer.json** to forward an app port locally.
     # (Adding the "ports" property to this file will not forward from a Codespace.)
 
-  postgresql:
-    image: postgres:latest
+  mongodb:
+    image: mongo:5.0.4
     restart: unless-stopped
     volumes:
-      - postgres-data:/var/lib/postgresql/data
-    environment:
-      POSTGRES_USER: postgres
-      POSTGRES_DB: postgres
-      POSTGRES_PASSWORD: postgres
-
-    # Add "forwardPorts": ["5432"] to **devcontainer.json** to forward PostgreSQL locally.
-    # (Adding the "ports" property to this file will not forward from a Codespace.)
+      - mongodb-data:/data/db
 
 volumes:
-  postgres-data:
+  mongodb-data:
     external: false

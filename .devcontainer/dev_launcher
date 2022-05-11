@@ -5,4 +5,4 @@
 cd /workspace/.devcontainer
 
 # adapt to package name
-my-microservice
+metadata-search-service

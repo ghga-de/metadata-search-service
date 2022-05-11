@@ -1,0 +1,142 @@
+{
+  "studies": [
+    {
+      "accession": "EGAS00001000274",
+      "creation_date": "2012-04-23T07:13.000Z",
+      "description": "Massively parallel sequencing has revolutionized research in cancer genetics and genomics and enhanced our understanding of natural human genetic variation. Recently, Lam et al. have performed a detailed comparison of two next-generation sequencing technologies with respect to their sensitivity to call single nucleotide variants (SNV) and indels. Here, we sequenced two tumor/normal pairs obtained from two paedriatic medulloblastoma patients with Life Technologies\u2019 SOLiD 4 and 5500xl SOLiD, Illumina\u2019s HiSeq2000, and Complete Genomics\u2019 technology.  We then compared their ability to call SNVs with high confidence. As gold standard for SNV calling, we used genotypes determined by an Affymetrix SNP array. Additionally, we performed a detailed analysis of how evenly each technology covers the genome and how the reads are distributed across functional genomic regions. Finally, we studied how a combination of data from different technologies might help to overcome the limitations in SNV calling by any of the four technologies alone.",
+      "has_attribute": [
+        {
+          "key": "centerName",
+          "value": "DKFZ-IBIOS"
+        },
+        {
+          "key": "published",
+          "value": true
+        },
+        {
+          "key": "released",
+          "value": "RELEASED"
+        }
+      ],
+      "has_project": "23b614aa-8eee-4d09-b3db-30f7524ebf57",
+      "id": "6c41f0c2-8145-468a-8d79-63ef900d0e2b",
+      "title": "Coverage bias and sensitivity of variant calling for four whole-genome sequencing technologies",
+      "type": "Whole Genome Sequencing",
+      "xref": [
+        "Coverage_bias_sensitivity_of_variant_calling_for_4_WG_seq_tech"
+      ]
+    },
+    {
+      "accession": "EGAS00001000443",
+      "creation_date": "2013-02-28T11:24.000Z",
+      "description": "Ependymomas are common childhood brain tumours that occur throughout the nervous system, but are most common in the paediatric hindbrain. Current standard therapy comprises surgery and radiation, but not cytotoxic chemotherapy as it does not further increase survival. Whole-genome and whole-exome sequencing of 47 hindbrain ependymomas reveals an extremely low mutation rate, and zero significant recurrent somatic single nucleotide variants. Although devoid of recurrent single nucleotide variants and focal copy number aberrations, poor-prognosis hindbrain ependymomas exhibit a CpG island methylator phenotype. Transcriptional silencing driven by CpG methylation converges exclusively on targets of the Polycomb repressive complex 2 which represses expression of differentiation genes through trimethylation of H3K27. CpG island methylator phenotype-positive hindbrain ependymomas are responsive to clinical drugs that target either DNA or H3K27 methylation both in vitro and in vivo. We conclude that epigenetic modifiers are the first rational therapeutic candidates for this deadly malignancy, which is epigenetically deregulated but genetically bland.",
+      "has_attribute": [
+        {
+          "key": "centerName",
+          "value": "DKFZ-IBIOS"
+        },
+        {
+          "key": "published",
+          "value": true
+        },
+        {
+          "key": "released",
+          "value": "RELEASED"
+        }
+      ],
+      "has_project": "e5664b5b-7c5e-4ade-ae06-8c028a3bbb9f",
+      "id": "c5460116-53fb-4d18-9914-7970fa08e874",
+      "title": "Epigenomic alterations define lethal CIMP-positive ependymomas of infancy",
+      "type": "Other",
+      "xref": [
+        "lindt_ependymoma_2013_02_28"
+      ]
+    },
+    {
+      "accession": "EGAS00001000455",
+      "creation_date": "2013-03-15T12:31.000Z",
+      "description": "Whole-blood samples of 16 mother-child pairs with differing maternal smoking behaviour were bisulfite treated and sequenced with deep coverage to identify smoking-associated differentially methylated regions.RNA-sequencing and ChIP-sequencing of 4 chromatin marks complete the data set and allow for integrative analyses, functional region annotation and to study the impact of epigenetic changes on gene expression.Longitudinal data spanning several years provides the means to investigate the stability of observed differences of all data types.",
+      "has_attribute": [
+        {
+          "key": "releasedDate",
+          "value": "2016-04-19T22:00.000Z"
+        },
+        {
+          "key": "centerName",
+          "value": "DKFZ-IBIOS"
+        },
+        {
+          "key": "published",
+          "value": true
+        },
+        {
+          "key": "released",
+          "value": "RELEASED"
+        }
+      ],
+      "has_project": "6a920e05-4714-4644-abcd-ae8c3697717a",
+      "id": "2ec70382-b309-448a-be8d-2ad9ae1f5cc2",
+      "title": "Whole genome bisufite sequencing of smoking and non-smoking mother-child pairsBisufite sequencing, RNA-seq and ChIP-Seq data of whole blood samples from smoking and non-smoking mothers and their children at gestation/birth and follow-up years.",
+      "type": "Epigenetics",
+      "xref": [
+        "marlboro-EEP-2013-03-15"
+      ]
+    },
+    {
+      "accession": "EGAS00001000698",
+      "creation_date": "2014-02-06T21:11.000Z",
+      "description": "This study contains omics datasets from the Neuromics project (www.rd-neuromics.eu) on rare neuromuscular and neurodegenerative disorders.   Data includes BAM and VCF files from whole-exome sequencing and standardised phenotypic data mapped to the human phenotype ontology (HPO). In some cases proteomic, transcriptomic and metabolomic data may also be available.  This study groups together datasets from individuals with a Huntington's disease phenotype and also includes some unaffected family members. Search under the Neuromics name to find related studies for other neuromuscular and neurodegenerative disorders.",
+      "has_attribute": [
+        {
+          "key": "releasedDate",
+          "value": "2019-09-04T22:00.000Z"
+        },
+        {
+          "key": "centerName",
+          "value": "Neuromics"
+        },
+        {
+          "key": "published",
+          "value": true
+        },
+        {
+          "key": "released",
+          "value": "RELEASED"
+        }
+      ],
+      "has_project": "99cfc7cd-8225-40a2-98be-ce369eef2aaf",
+      "id": "6e5cc3c8-62f6-4c5c-b4ad-70393cf871ee",
+      "title": "Neuromics / RD-Connect - Huntington's disease",
+      "type": "Other",
+      "xref": [
+        "ena-STUDY-NEUROMICS-06-02-2014-22:55:01:287-32"
+      ]
+    },
+    {
+      "accession": "EGAS00001000767",
+      "creation_date": "2014-04-11T09:28.000Z",
+      "description": "Schwannomatosis (MIM #162091) is characterized by the development of multiple schwannomas without vestibular nerve involvement (which is a characteristic of neurofibromatosis type 2 - NF2). In an effort to detect novel genetic alterations predisposing to schwannomatosis, we sequenced eight tumor-blood DNA pairs from de novo schwannomatosis patients. The results of our study are present in the paper \"Whole exome sequencing reveals that the majority of schwannomatosis cases remain unexplained after excluding SMARCB1 and LZTR1 germline variants\" published in Acta Neuropathologica (PMID:25008767)",
+      "has_attribute": [
+        {
+          "key": "centerName",
+          "value": "DKFZ-IBIOS"
+        },
+        {
+          "key": "published",
+          "value": true
+        },
+        {
+          "key": "released",
+          "value": "RELEASED"
+        }
+      ],
+      "has_project": "3973323e-3a78-48a5-947b-1f95563cac52",
+      "id": "619ba0a7-1baf-4abb-b171-90b37e4734bd",
+      "title": "Next generation sequencing of sporadic schwannomatosis samples",
+      "type": "Other",
+      "xref": [
+        "ena-STUDY-DKFZ-IBIOS-11-04-2014-11:44:21:184-48"
+      ]
+    }
+  ]
+}
