@@ -55,6 +55,7 @@ class Facet(BaseModel):
     """
 
     key: str = Field(description="The facet key")
+    name: str = Field(description="The facet name")
     options: List[FacetOption] = Field(
         description="One or more values and their counts"
     )
