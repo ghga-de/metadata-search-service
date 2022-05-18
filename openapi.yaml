@@ -9,6 +9,8 @@ components:
       - Study
       - Experiment
       - Sample
+      - Biospecimen
+      - Individual
       - Publication
       - File
       title: DocumentType

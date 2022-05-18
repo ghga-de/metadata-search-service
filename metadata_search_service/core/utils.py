@@ -22,9 +22,11 @@ DEFAULT_FACET_FIELDS: Dict[str, Set[Any]] = {
     "Project": set(),
     "Study": {"type"},
     "Experiment": {"type"},
-    "Sample": {"tissue"},
+    "Biospecimen": {"has_phenotypic_feature.concept_name"},
+    "Sample": set(),
     "Publication": set(),
-    "File": {"type"},
+    "File": {"format"},
+    "Individual": {"sex", "has_phenotypic_feature.concept_name"},
 }
 
 

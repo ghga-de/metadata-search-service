@@ -31,6 +31,8 @@ class DocumentType(str, Enum):
     STUDY = "Study"
     EXPERIMENT = "Experiment"
     SAMPLE = "Sample"
+    BIOSPECIMEN = "Biospecimen"
+    INDIVIDUAL = "Individual"
     PUBLICATION = "Publication"
     FILE = "File"
 
