@@ -33,8 +33,8 @@ services:
     user: vscode
 
     # define environment variables
-    #environment:
-
+    environment:
+      METADATA_SEARCH_SERVICE_CONFIG_YAML: /workspace/.devcontainer/.dev_config.yaml
     # Use "forwardPorts" in **devcontainer.json** to forward an app port locally.
     # (Adding the "ports" property to this file will not forward from a Codespace.)
 
