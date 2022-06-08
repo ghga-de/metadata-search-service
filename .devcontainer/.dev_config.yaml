@@ -8,3 +8,5 @@ db_name: metadata-store
 api_root_path: "/"
 openapi_url: "/openapi.json"
 docs_url: "/docs"
+cors_allow_credentials: true
+cors_allowed_origins: ["*"]
